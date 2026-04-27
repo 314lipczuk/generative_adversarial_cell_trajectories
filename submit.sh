@@ -1,0 +1,31 @@
+#!/bin/bash
+#SBATCH --gres=gpu:1
+#SBATCH --cpus-per-task=4
+#SBATCH --mem=4G
+#SBATCH --time=04:00:00
+
+set -euo pipefail
+
+# SLURM/SSH jobs get a minimal PATH; ensure uv is available
+export PATH="$HOME/.local/bin:$HOME/.cargo/bin:$PATH"
+source "$HOME/.bashrc" 2>/dev/null || source "$HOME/.profile" 2>/dev/null || true
+
+# ── Args: NAME NOTEBOOK EXP_DIR [-- marimo cli args...] ──────────────────────
+NAME="${1:?Usage: submit.sh NAME NOTEBOOK EXP_DIR [-- --key value ...]}"
+NOTEBOOK="${2:?Usage: submit.sh NAME NOTEBOOK EXP_DIR [-- --key value ...]}"
+EXP_DIR="${3:?Usage: submit.sh NAME NOTEBOOK EXP_DIR [-- --key value ...]}"
+shift 3
+
+echo "══════════════════════════════════════════════════════"
+echo "Experiment : $NAME"
+echo "Notebook   : $NOTEBOOK"
+echo "Args       : $*"
+echo "Job started: $(date)"
+echo "Node       : $(hostname)"
+echo "GPU        : $(nvidia-smi --query-gpu=name,memory.total --format=csv,noheader 2>/dev/null || echo 'N/A')"
+echo "══════════════════════════════════════════════════════"
+
+uv sync
+PYTHONUNBUFFERED=1 uv run marimo export html "$NOTEBOOK" -o "$EXP_DIR/notebook.html" -- --name "$NAME" --results-dir "$EXP_DIR" "$@"
+
+echo "Job finished: $(date)"

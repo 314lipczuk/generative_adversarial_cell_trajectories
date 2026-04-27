@@ -1,0 +1,48 @@
+[project]
+name = "masters"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "matplotlib>=3.10.1",
+    "numpy>=2.2.4",
+    "pandas>=2.2.2",
+    "pyarrow>=18.0.0",
+    "scikit-learn>=1.4.2",
+    "seaborn>=0.13.2",
+    "torch>=2.10.0",
+    "tqdm>=4.67.1",
+    "papermill>=2.6.0",
+    "ipykernel>=6.29.0",
+    "scipy>=1.12.0",
+    "sympy>=1.13.0",
+    "ipywidgets>=8.1.8",
+    "gymnasium>=1.2.3",
+    "stable-baselines3>=2.7.1",
+    "marimo[lsp]>=0.21.1",
+    "polars>=1.39.2",
+    "umap-learn>=0.5.11",
+    "wigglystuff>=0.2.39",
+    "pydantic-ai>=1.70.0",
+    "pydantic>=2.12.5",
+    "altair>=6.0.0",
+    "plotly>=6.6.0",
+    "tabulate>=0.10.0",
+    "hastyplot",
+    "panel>=1.8.10",
+]
+
+[tool.uv.sources]
+hastyplot = { git = "https://github.com/314lipczuk/hastyplot" }
+
+[dependency-groups]
+dev = [
+    "ipykernel>=7.2.0",
+    "nbclient>=0.10.4",
+    "python-lsp-ruff>=2.3.1",
+    "python-lsp-server>=1.14.0",
+    "vegafusion>=2.0.3",
+    "vl-convert-python>=1.9.0.post1",
+    "websockets>=16.0",
+]

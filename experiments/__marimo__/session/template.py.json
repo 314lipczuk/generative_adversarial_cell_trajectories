@@ -1,0 +1,238 @@
+{
+  "version": "1",
+  "metadata": {
+    "marimo_version": "0.22.5",
+    "script_metadata_hash": null
+  },
+  "cells": [
+    {
+      "id": "setup",
+      "code_hash": "926daedf01efffc0c78e29cc8e9f7561",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/plain": ""
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "Hbol",
+      "code_hash": "5af226e6113ea9262fd94798c632a84a",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/plain": ""
+          }
+        }
+      ],
+      "console": [
+        {
+          "type": "stream",
+          "name": "stdout",
+          "text": "Device: mps\n",
+          "mimetype": "text/plain"
+        }
+      ]
+    },
+    {
+      "id": "MJUe",
+      "code_hash": "8d9a0bd477cafffcaf684a62bbf1ebc8",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><span class=\"paragraph\"><strong>Mode:</strong> <code>train</code> \u00b7 <strong>Headless:</strong> <code>True</code> \u00b7 <strong>Experiment:</strong> <code>tpl_real</code> \u00b7 <strong>Dry run:</strong> <code>True</code></span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "vblA",
+      "code_hash": "ef704430331c76908124f5d06dd2df1c",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "bkHC",
+      "code_hash": "22ec55eb45c9311e60b1a7edaa0d8110",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "lEQa",
+      "code_hash": "294499fa078ca537fd99dd2ecf70e0ce",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/plain": ""
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "PKri",
+      "code_hash": "d2acd0389c71a9bc96e31e85cb6c18cb",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "Xref",
+      "code_hash": "3cf3c5c7381368dc0555e0d817ada326",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><span class=\"paragraph\"><strong>Headless train</strong> \u2014 <code>tpl_real</code> \u00b7 source <code>real</code> \u00b7 dry_run=True</span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "SFPL",
+      "code_hash": "342edf1ba18a9bad4b7bca290509eca0",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><span class=\"paragraph\"><strong>Data:</strong> 672 trajectories (<code>real</code>) \u00b7 train=469 / val=68 / test=135 \u00b7 dry_run=True</span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "BYtC",
+      "code_hash": "a824a0f3dfea65f11b6032714a29abdf",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "RGSE",
+      "code_hash": "6accf83df2534966f72901c6fefcf145",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><span class=\"paragraph\"><strong>Run ready</strong> \u00b7 Model \u00b7 11 params</span></span>"
+          }
+        }
+      ],
+      "console": [
+        {
+          "type": "stream",
+          "name": "stdout",
+          "text": "[experiment] Started tpl_real \u2192 /tmp/tpl_real_2026-04-22_19:38:33_jlocal\n",
+          "mimetype": "text/plain"
+        }
+      ]
+    },
+    {
+      "id": "Kclp",
+      "code_hash": "844b2aec522a6a954590304453814d35",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "emfo",
+      "code_hash": "fd6b08904a1be24de5e98ad1a66c232c",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "application/vnd.vegalite.v6+json": "{\n  \"$schema\": \"https://vega.github.io/schema/vega-lite/v6.1.0.json\",\n  \"config\": {\n    \"view\": {\n      \"continuousHeight\": 300,\n      \"continuousWidth\": 300\n    }\n  },\n  \"data\": {\n    \"name\": \"data-48bbbce909e412430e1119336d17d2db\"\n  },\n  \"datasets\": {\n    \"data-48bbbce909e412430e1119336d17d2db\": [\n      {\n        \"epoch\": 0,\n        \"loss\": 1.0,\n        \"split\": \"train\"\n      },\n      {\n        \"epoch\": 1,\n        \"loss\": 0.5,\n        \"split\": \"train\"\n      },\n      {\n        \"epoch\": 2,\n        \"loss\": 0.3333333333333333,\n        \"split\": \"train\"\n      },\n      {\n        \"epoch\": 0,\n        \"loss\": 1.01,\n        \"split\": \"val\"\n      },\n      {\n        \"epoch\": 1,\n        \"loss\": 0.51,\n        \"split\": \"val\"\n      },\n      {\n        \"epoch\": 2,\n        \"loss\": 0.3433333333333333,\n        \"split\": \"val\"\n      }\n    ]\n  },\n  \"encoding\": {\n    \"color\": {\n      \"field\": \"split\",\n      \"title\": \"split\",\n      \"type\": \"nominal\"\n    },\n    \"x\": {\n      \"field\": \"epoch\",\n      \"title\": \"epoch\",\n      \"type\": \"quantitative\"\n    },\n    \"y\": {\n      \"field\": \"loss\",\n      \"title\": \"loss\",\n      \"type\": \"quantitative\"\n    }\n  },\n  \"mark\": {\n    \"clip\": false,\n    \"strokeWidth\": 2,\n    \"type\": \"line\"\n  },\n  \"usermeta\": {\n    \"embedOptions\": {\n      \"actions\": false\n    }\n  }\n}"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "Hstk",
+      "code_hash": "e823aca731aaa03667f85df150ddd431",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><span class=\"paragraph\"><strong>Metrics:</strong> <code>{'variant': 'template', 'data_source': 'real'}</code></span></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "nWHF",
+      "code_hash": "15637c3d81383b1d4c3d1f634ba5d803",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"></span>"
+          }
+        }
+      ],
+      "console": []
+    },
+    {
+      "id": "iLit",
+      "code_hash": "2586613ea3ca95f6ed20e36fbbef8a51",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/markdown": "<span class=\"markdown prose dark:prose-invert contents\"><span class=\"paragraph\"><strong>Saved</strong> on <strong>Local</strong> (<code>polya</code>)</span>\n<span class=\"paragraph\"><code>/tmp/tpl_real_2026-04-22_19:38:33_jlocal</code></span></span>"
+          }
+        }
+      ],
+      "console": [
+        {
+          "type": "stream",
+          "name": "stdout",
+          "text": "[experiment] Final save \u2192 /tmp/tpl_real_2026-04-22_19:38:33_jlocal\n",
+          "mimetype": "text/plain"
+        }
+      ]
+    }
+  ]
+}
