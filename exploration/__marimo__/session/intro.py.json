@@ -1,0 +1,320 @@
+{
+  "version": "1",
+  "metadata": {
+    "marimo_version": "0.23.4",
+    "script_metadata_hash": null
+  },
+  "cells": [
+    {
+      "id": "Hbol",
+      "code_hash": "2a92624a7c422af66dd1b06d95fa11bb",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/plain": ""
+          }
+        }
+      ],
+      "console": [
+        {
+          "type": "stream",
+          "name": "stderr",
+          "text": "\u001b[34m[D 260503 23:57:38 cell_runner:779]\u001b(B\u001b[m Running post_execution hooks in context\n\u001b[34m[D 260503 23:57:38 hooks_post_execution:75]\u001b(B\u001b[m Acquiring graph lock to update cell import workspace\n\u001b[34m[D 260503 23:57:38 hooks_post_execution:77]\u001b(B\u001b[m Acquired graph lock to update import workspace.\n",
+          "mimetype": "text/plain"
+        }
+      ]
+    },
+    {
+      "id": "MJUe",
+      "code_hash": "1576dcfc91c73a49e5fa5d8b4ac51dfb",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/plain": ""
+          }
+        }
+      ],
+      "console": [
+        {
+          "type": "stream",
+          "name": "stderr",
+          "text": "\u001b[34m[D 260503 23:57:41 cell_runner:779]\u001b(B\u001b[m Running post_execution hooks in context\n\u001b[34m[D 260503 23:57:41 hooks_post_execution:75]\u001b(B\u001b[m Acquiring graph lock to update cell import workspace\n\u001b[34m[D 260503 23:57:41 hooks_post_execution:77]\u001b(B\u001b[m Acquired graph lock to update import workspace.\n\u001b[34m[D 260503 23:57:42 hooks_post_execution:160]\u001b(B\u001b[m Broadcasting data tables\n",
+          "mimetype": "text/plain"
+        }
+      ]
+    },
+    {
+      "id": "vblA",
+      "code_hash": "4bca24304861acde5770fdbe3cc2503b",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<marimo-ui-element object-id='vblA-0' random-id='a0369ab1-2fa4-8bcf-c79a-0152f264a048'><marimo-table data-initial-value='[]' data-label='null' data-data='&quot;[{&#92;&quot;mean_intensity_C0_nuc&#92;&quot;:1108.0739795918366,&#92;&quot;mean_intensity_C1_nuc&#92;&quot;:1614.9234693877552,&#92;&quot;label&#92;&quot;:11,&#92;&quot;x&#92;&quot;:207.53826530612244,&#92;&quot;y&#92;&quot;:329.4183673469388,&#92;&quot;area&#92;&quot;:392.0,&#92;&quot;median_intensity_C0_nuc&#92;&quot;:1146.5,&#92;&quot;median_intensity_C1_nuc&#92;&quot;:1649.0,&#92;&quot;mean_intensity_C0_ring&#92;&quot;:421.58620689655174,&#92;&quot;mean_intensity_C1_ring&#92;&quot;:865.0057471264367,&#92;&quot;median_intensity_C0_ring&#92;&quot;:418.0,&#92;&quot;median_intensity_C1_ring&#92;&quot;:913.5,&#92;&quot;cnr&#92;&quot;:0.5356326559885684,&#92;&quot;cnr_median&#92;&quot;:0.5539721043056398,&#92;&quot;particle&#92;&quot;:10,&#92;&quot;fov&#92;&quot;:20,&#92;&quot;fov_x&#92;&quot;:9747.7,&#92;&quot;fov_y&#92;&quot;:-11250.5,&#92;&quot;fov_name&#92;&quot;:&#92;&quot;20&#92;&quot;,&#92;&quot;timestep&#92;&quot;:0,&#92;&quot;time&#92;&quot;:12600.0,&#92;&quot;cell_line&#92;&quot;:&#92;&quot;EGFR&#92;&quot;,&#92;&quot;channels&#92;&quot;:[{&#92;&quot;device_name&#92;&quot;:null,&#92;&quot;exposure&#92;&quot;:300,&#92;&quot;group&#92;&quot;:null,&#92;&quot;name&#92;&quot;:&#92;&quot;miRFP&#92;&quot;,&#92;&quot;power&#92;&quot;:null,&#92;&quot;property_name&#92;&quot;:null},{&#92;&quot;device_name&#92;&quot;:null,&#92;&quot;exposure&#92;&quot;:200,&#92;&quot;group&#92;&quot;:null,&#92;&quot;name&#92;&quot;:&#92;&quot;mScarlet3&#92;&quot;,&#92;&quot;power&#92;&quot;:null,&#92;&quot;property_name&#92;&quot;:null}],&#92;&quot;fname&#92;&quot;:&#92;&quot;020_00000&#92;&quot;,&#92;&quot;optocheck&#92;&quot;:false,&#92;&quot;optocheck_channels&#92;&quot;:[{&#92;&quot;device_name&#92;&quot;:null,&#92;&quot;exposure&#92;&quot;:600,&#92;&quot;group&#92;&quot;:null,&#92;&quot;name&#92;&quot;:&#92;&quot;mCitrine&#92;&quot;,&#92;&quot;power&#92;&quot;:null,&#92;&quot;property_name&#92;&quot;:null}],&#92;&quot;ramp_pattern_name&#92;&quot;:&#92;&quot;3-2-1minIntervals&#92;&quot;,&#92;&quot;stim_timestep&#92;&quot;:[10,13,16,19,22,25,28,31,34,37,40,43,46,49,52,55,58,61,64,67,70,72,74,76,78,80,82,84,86,88,90,92,94,96,98,100,102,104,106,108,110,112,114,116,118,120,122,124,126,128,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,165,166,167,168,169,170,171,172,173,174,175,176,177,178,179,180,181,182,183,184,185,186,187,188,189,190],&#92;&quot;stim_exposure_list&#92;&quot;:[50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50],&#92;&quot;stim_power&#92;&quot;:10,&#92;&quot;stim_channel_name&#92;&quot;:&#92;&quot;CyanStim&#92;&quot;,&#92;&quot;stim_channel_group&#92;&quot;:&#92;&quot;TTL_ERK&#92;&quot;,&#92;&quot;stim_channel_device_name&#92;&quot;:&#92;&quot;Spectra&#92;&quot;,&#92;&quot;stim_channel_power_property_name&#92;&quot;:&#92;&quot;Cyan_Level&#92;&quot;,&#92;&quot;stim_exposure&#92;&quot;:0.0,&#92;&quot;stim&#92;&quot;:false,&#92;&quot;optocheck_mean_intensity&#92;&quot;:1741.0445103857567,&#92;&quot;frame&#92;&quot;:0,&#92;&quot;cnr_median_norm&#92;&quot;:0.9921297465918776,&#92;&quot;cnr_mean_norm&#92;&quot;:0.9798570829330406,&#92;&quot;median_cnr_0_9&#92;&quot;:0.5466436537716708,&#92;&quot;energy_uJ&#92;&quot;:0.0,&#92;&quot;fluence_mJ_cm2&#92;&quot;:0.0,&#92;&quot;energy_per_cell&#92;&quot;:0.0,&#92;&quot;u_t&#92;&quot;:0.0,&#92;&quot;m_t&#92;&quot;:0,&#92;&quot;recency&#92;&quot;:0.0,&#92;&quot;burst_pos&#92;&quot;:0,&#92;&quot;n_5&#92;&quot;:0,&#92;&quot;slope_5&#92;&quot;:0.0},{&#92;&quot;mean_intensity_C0_nuc&#92;&quot;:1111.2531969309464,&#92;&quot;mean_intensity_C1_nuc&#92;&quot;:1559.074168797954,&#92;&quot;label&#92;&quot;:11,&#92;&quot;x&#92;&quot;:207.9309462915601,&#92;&quot;y&#92;&quot;:329.539641943734,&#92;&quot;area&#92;&quot;:391.0,&#92;&quot;median_intensity_C0_nuc&#92;&quot;:1151.0,&#92;&quot;median_intensity_C1_nuc&#92;&quot;:1598.0,&#92;&quot;mean_intensity_C0_ring&#92;&quot;:418.81609195402297,&#92;&quot;mean_intensity_C1_ring&#92;&quot;:837.3218390804598,&#92;&quot;median_intensity_C0_ring&#92;&quot;:418.0,&#92;&quot;median_intensity_C1_ring&#92;&quot;:887.5,&#92;&quot;cnr&#92;&quot;:0.5370635059177684,&#92;&quot;cnr_median&#92;&quot;:0.5553817271589487,&#92;&quot;particle&#92;&quot;:10,&#92;&quot;fov&#92;&quot;:20,&#92;&quot;fov_x&#92;&quot;:9747.7,&#92;&quot;fov_y&#92;&quot;:-11250.5,&#92;&quot;fov_name&#92;&quot;:&#92;&quot;20&#92;&quot;,&#92;&quot;timestep&#92;&quot;:1,&#92;&quot;time&#92;&quot;:12660.0,&#92;&quot;cell_line&#92;&quot;:&#92;&quot;EGFR&#92;&quot;,&#92;&quot;channels&#92;&quot;:[{&#92;&quot;device_name&#92;&quot;:null,&#92;&quot;exposure&#92;&quot;:300,&#92;&quot;group&#92;&quot;:null,&#92;&quot;name&#92;&quot;:&#92;&quot;miRFP&#92;&quot;,&#92;&quot;power&#92;&quot;:null,&#92;&quot;property_name&#92;&quot;:null},{&#92;&quot;device_name&#92;&quot;:null,&#92;&quot;exposure&#92;&quot;:200,&#92;&quot;group&#92;&quot;:null,&#92;&quot;name&#92;&quot;:&#92;&quot;mScarlet3&#92;&quot;,&#92;&quot;power&#92;&quot;:null,&#92;&quot;property_name&#92;&quot;:null}],&#92;&quot;fname&#92;&quot;:&#92;&quot;020_00001&#92;&quot;,&#92;&quot;optocheck&#92;&quot;:false,&#92;&quot;optocheck_channels&#92;&quot;:[{&#92;&quot;device_name&#92;&quot;:null,&#92;&quot;exposure&#92;&quot;:600,&#92;&quot;group&#92;&quot;:null,&#92;&quot;name&#92;&quot;:&#92;&quot;mCitrine&#92;&quot;,&#92;&quot;power&#92;&quot;:null,&#92;&quot;property_name&#92;&quot;:null}],&#92;&quot;ramp_pattern_name&#92;&quot;:&#92;&quot;3-2-1minIntervals&#92;&quot;,&#92;&quot;stim_timestep&#92;&quot;:[10,13,16,19,22,25,28,31,34,37,40,43,46,49,52,55,58,61,64,67,70,72,74,76,78,80,82,84,86,88,90,92,94,96,98,100,102,104,106,108,110,112,114,116,118,120,122,124,126,128,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,165,166,167,168,169,170,171,172,173,174,175,176,177,178,179,180,181,182,183,184,185,186,187,188,189,190],&#92;&quot;stim_exposure_list&#92;&quot;:[50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50],&#92;&quot;stim_power&#92;&quot;:10,&#92;&quot;stim_channel_name&#92;&quot;:&#92;&quot;CyanStim&#92;&quot;,&#92;&quot;stim_channel_group&#92;&quot;:&#92;&quot;TTL_ERK&#92;&quot;,&#92;&quot;stim_channel_device_name&#92;&quot;:&#92;&quot;Spectra&#92;&quot;,&#92;&quot;stim_channel_power_property_name&#92;&quot;:&#92;&quot;Cyan_Level&#92;&quot;,&#92;&quot;stim_exposure&#92;&quot;:0.0,&#92;&quot;stim&#92;&quot;:false,&#92;&quot;optocheck_mean_intensity&#92;&quot;:1741.0445103857567,&#92;&quot;frame&#92;&quot;:1,&#92;&quot;cnr_median_norm&#92;&quot;:0.9946542938630736,&#92;&quot;cnr_mean_norm&#92;&quot;:0.9824746015291638,&#92;&quot;median_cnr_0_9&#92;&quot;:0.5466436537716708,&#92;&quot;energy_uJ&#92;&quot;:0.0,&#92;&quot;fluence_mJ_cm2&#92;&quot;:0.0,&#92;&quot;energy_per_cell&#92;&quot;:0.0,&#92;&quot;u_t&#92;&quot;:0.0,&#92;&quot;m_t&#92;&quot;:0,&#92;&quot;recency&#92;&quot;:0.0,&#92;&quot;burst_pos&#92;&quot;:0,&#92;&quot;n_5&#92;&quot;:0,&#92;&quot;slope_5&#92;&quot;:0.0},{&#92;&quot;mean_intensity_C0_nuc&#92;&quot;:1104.7969151670952,&#92;&quot;mean_intensity_C1_nuc&#92;&quot;:1578.6452442159382,&#92;&quot;label&#92;&quot;:11,&#92;&quot;x&#92;&quot;:207.94601542416453,&#92;&quot;y&#92;&quot;:329.8457583547558,&#92;&quot;area&#92;&quot;:389.0,&#92;&quot;median_intensity_C0_nuc&#92;&quot;:1130.0,&#92;&quot;median_intensity_C1_nuc&#92;&quot;:1616.0,&#92;&quot;mean_intensity_C0_ring&#92;&quot;:420.3179190751445,&#92;&quot;mean_intensity_C1_ring&#92;&quot;:846.1618497109827,&#92;&quot;median_intensity_C0_ring&#92;&quot;:409.0,&#92;&quot;median_intensity_C1_ring&#92;&quot;:903.0,&#92;&quot;cnr&#92;&quot;:0.5360050668833096,&#92;&quot;cnr_median&#92;&quot;:0.5587871287128713,&#92;&quot;particle&#92;&quot;:10,&#92;&quot;fov&#92;&quot;:20,&#92;&quot;fov_x&#92;&quot;:9747.7,&#92;&quot;fov_y&#92;&quot;:-11250.5,&#92;&quot;fov_name&#92;&quot;:&#92;&quot;20&#92;&quot;,&#92;&quot;timestep&#92;&quot;:2,&#92;&quot;time&#92;&quot;:12720.0,&#92;&quot;cell_line&#92;&quot;:&#92;&quot;EGFR&#92;&quot;,&#92;&quot;channels&#92;&quot;:[{&#92;&quot;device_name&#92;&quot;:null,&#92;&quot;exposure&#92;&quot;:300,&#92;&quot;group&#92;&quot;:null,&#92;&quot;name&#92;&quot;:&#92;&quot;miRFP&#92;&quot;,&#92;&quot;power&#92;&quot;:null,&#92;&quot;property_name&#92;&quot;:null},{&#92;&quot;device_name&#92;&quot;:null,&#92;&quot;exposure&#92;&quot;:200,&#92;&quot;group&#92;&quot;:null,&#92;&quot;name&#92;&quot;:&#92;&quot;mScarlet3&#92;&quot;,&#92;&quot;power&#92;&quot;:null,&#92;&quot;property_name&#92;&quot;:null}],&#92;&quot;fname&#92;&quot;:&#92;&quot;020_00002&#92;&quot;,&#92;&quot;optocheck&#92;&quot;:false,&#92;&quot;optocheck_channels&#92;&quot;:[{&#92;&quot;device_name&#92;&quot;:null,&#92;&quot;exposure&#92;&quot;:600,&#92;&quot;group&#92;&quot;:null,&#92;&quot;name&#92;&quot;:&#92;&quot;mCitrine&#92;&quot;,&#92;&quot;power&#92;&quot;:null,&#92;&quot;property_name&#92;&quot;:null}],&#92;&quot;ramp_pattern_name&#92;&quot;:&#92;&quot;3-2-1minIntervals&#92;&quot;,&#92;&quot;stim_timestep&#92;&quot;:[10,13,16,19,22,25,28,31,34,37,40,43,46,49,52,55,58,61,64,67,70,72,74,76,78,80,82,84,86,88,90,92,94,96,98,100,102,104,106,108,110,112,114,116,118,120,122,124,126,128,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,165,166,167,168,169,170,171,172,173,174,175,176,177,178,179,180,181,182,183,184,185,186,187,188,189,190],&#92;&quot;stim_exposure_list&#92;&quot;:[50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50],&#92;&quot;stim_power&#92;&quot;:10,&#92;&quot;stim_channel_name&#92;&quot;:&#92;&quot;CyanStim&#92;&quot;,&#92;&quot;stim_channel_group&#92;&quot;:&#92;&quot;TTL_ERK&#92;&quot;,&#92;&quot;stim_channel_device_name&#92;&quot;:&#92;&quot;Spectra&#92;&quot;,&#92;&quot;stim_channel_power_property_name&#92;&quot;:&#92;&quot;Cyan_Level&#92;&quot;,&#92;&quot;stim_exposure&#92;&quot;:0.0,&#92;&quot;stim&#92;&quot;:false,&#92;&quot;optocheck_mean_intensity&#92;&quot;:1741.0445103857567,&#92;&quot;frame&#92;&quot;:2,&#92;&quot;cnr_median_norm&#92;&quot;:1.0007531572435169,&#92;&quot;cnr_mean_norm&#92;&quot;:0.9805383510538205,&#92;&quot;median_cnr_0_9&#92;&quot;:0.5466436537716708,&#92;&quot;energy_uJ&#92;&quot;:0.0,&#92;&quot;fluence_mJ_cm2&#92;&quot;:0.0,&#92;&quot;energy_per_cell&#92;&quot;:0.0,&#92;&quot;u_t&#92;&quot;:0.0,&#92;&quot;m_t&#92;&quot;:0,&#92;&quot;recency&#92;&quot;:0.0,&#92;&quot;burst_pos&#92;&quot;:0,&#92;&quot;n_5&#92;&quot;:0,&#92;&quot;slope_5&#92;&quot;:0.0},{&#92;&quot;mean_intensity_C0_nuc&#92;&quot;:1100.1687979539643,&#92;&quot;mean_intensity_C1_nuc&#92;&quot;:1576.0281329923273,&#92;&quot;label&#92;&quot;:11,&#92;&quot;x&#92;&quot;:208.0230179028133,&#92;&quot;y&#92;&quot;:329.8951406649616,&#92;&quot;area&#92;&quot;:391.0,&#92;&quot;median_intensity_C0_nuc&#92;&quot;:1128.0,&#92;&quot;median_intensity_C1_nuc&#92;&quot;:1602.0,&#92;&quot;mean_intensity_C0_ring&#92;&quot;:418.01149425287355,&#92;&quot;mean_intensity_C1_ring&#92;&quot;:856.6954022988506,&#92;&quot;median_intensity_C0_ring&#92;&quot;:418.0,&#92;&quot;median_intensity_C1_ring&#92;&quot;:896.5,&#92;&quot;cnr&#92;&quot;:0.5435787498743979,&#92;&quot;cnr_median&#92;&quot;:0.5596129837702871,&#92;&quot;particle&#92;&quot;:10,&#92;&quot;fov&#92;&quot;:20,&#92;&quot;fov_x&#92;&quot;:9747.7,&#92;&quot;fov_y&#92;&quot;:-11250.5,&#92;&quot;fov_name&#92;&quot;:&#92;&quot;20&#92;&quot;,&#92;&quot;timestep&#92;&quot;:3,&#92;&quot;time&#92;&quot;:12780.0,&#92;&quot;cell_line&#92;&quot;:&#92;&quot;EGFR&#92;&quot;,&#92;&quot;channels&#92;&quot;:[{&#92;&quot;device_name&#92;&quot;:null,&#92;&quot;exposure&#92;&quot;:300,&#92;&quot;group&#92;&quot;:null,&#92;&quot;name&#92;&quot;:&#92;&quot;miRFP&#92;&quot;,&#92;&quot;power&#92;&quot;:null,&#92;&quot;property_name&#92;&quot;:null},{&#92;&quot;device_name&#92;&quot;:null,&#92;&quot;exposure&#92;&quot;:200,&#92;&quot;group&#92;&quot;:null,&#92;&quot;name&#92;&quot;:&#92;&quot;mScarlet3&#92;&quot;,&#92;&quot;power&#92;&quot;:null,&#92;&quot;property_name&#92;&quot;:null}],&#92;&quot;fname&#92;&quot;:&#92;&quot;020_00003&#92;&quot;,&#92;&quot;optocheck&#92;&quot;:false,&#92;&quot;optocheck_channels&#92;&quot;:[{&#92;&quot;device_name&#92;&quot;:null,&#92;&quot;exposure&#92;&quot;:600,&#92;&quot;group&#92;&quot;:null,&#92;&quot;name&#92;&quot;:&#92;&quot;mCitrine&#92;&quot;,&#92;&quot;power&#92;&quot;:null,&#92;&quot;property_name&#92;&quot;:null}],&#92;&quot;ramp_pattern_name&#92;&quot;:&#92;&quot;3-2-1minIntervals&#92;&quot;,&#92;&quot;stim_timestep&#92;&quot;:[10,13,16,19,22,25,28,31,34,37,40,43,46,49,52,55,58,61,64,67,70,72,74,76,78,80,82,84,86,88,90,92,94,96,98,100,102,104,106,108,110,112,114,116,118,120,122,124,126,128,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,165,166,167,168,169,170,171,172,173,174,175,176,177,178,179,180,181,182,183,184,185,186,187,188,189,190],&#92;&quot;stim_exposure_list&#92;&quot;:[50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50],&#92;&quot;stim_power&#92;&quot;:10,&#92;&quot;stim_channel_name&#92;&quot;:&#92;&quot;CyanStim&#92;&quot;,&#92;&quot;stim_channel_group&#92;&quot;:&#92;&quot;TTL_ERK&#92;&quot;,&#92;&quot;stim_channel_device_name&#92;&quot;:&#92;&quot;Spectra&#92;&quot;,&#92;&quot;stim_channel_power_property_name&#92;&quot;:&#92;&quot;Cyan_Level&#92;&quot;,&#92;&quot;stim_exposure&#92;&quot;:0.0,&#92;&quot;stim&#92;&quot;:false,&#92;&quot;optocheck_mean_intensity&#92;&quot;:1741.0445103857567,&#92;&quot;frame&#92;&quot;:3,&#92;&quot;cnr_median_norm&#92;&quot;:1.0022322125289136,&#92;&quot;cnr_mean_norm&#92;&quot;:0.9943932324538555,&#92;&quot;median_cnr_0_9&#92;&quot;:0.5466436537716708,&#92;&quot;energy_uJ&#92;&quot;:0.0,&#92;&quot;fluence_mJ_cm2&#92;&quot;:0.0,&#92;&quot;energy_per_cell&#92;&quot;:0.0,&#92;&quot;u_t&#92;&quot;:0.0,&#92;&quot;m_t&#92;&quot;:0,&#92;&quot;recency&#92;&quot;:0.0,&#92;&quot;burst_pos&#92;&quot;:0,&#92;&quot;n_5&#92;&quot;:0,&#92;&quot;slope_5&#92;&quot;:0.0},{&#92;&quot;mean_intensity_C0_nuc&#92;&quot;:1069.6640625,&#92;&quot;mean_intensity_C1_nuc&#92;&quot;:1531.6432291666667,&#92;&quot;label&#92;&quot;:11,&#92;&quot;x&#92;&quot;:207.70572916666666,&#92;&quot;y&#92;&quot;:329.7994791666667,&#92;&quot;area&#92;&quot;:384.0,&#92;&quot;median_intensity_C0_nuc&#92;&quot;:1105.5,&#92;&quot;median_intensity_C1_nuc&#92;&quot;:1567.5,&#92;&quot;mean_intensity_C0_ring&#92;&quot;:445.39766081871346,&#92;&quot;mean_intensity_C1_ring&#92;&quot;:844.46783625731,&#92;&quot;median_intensity_C0_ring&#92;&quot;:444.0,&#92;&quot;median_intensity_C1_ring&#92;&quot;:872.0,&#92;&quot;cnr&#92;&quot;:0.5513476116215172,&#92;&quot;cnr_median&#92;&quot;:0.5562998405103668,&#92;&quot;particle&#92;&quot;:10,&#92;&quot;fov&#92;&quot;:20,&#92;&quot;fov_x&#92;&quot;:9747.7,&#92;&quot;fov_y&#92;&quot;:-11250.5,&#92;&quot;fov_name&#92;&quot;:&#92;&quot;20&#92;&quot;,&#92;&quot;timestep&#92;&quot;:4,&#92;&quot;time&#92;&quot;:12840.0,&#92;&quot;cell_line&#92;&quot;:&#92;&quot;EGFR&#92;&quot;,&#92;&quot;channels&#92;&quot;:[{&#92;&quot;device_name&#92;&quot;:null,&#92;&quot;exposure&#92;&quot;:300,&#92;&quot;group&#92;&quot;:null,&#92;&quot;name&#92;&quot;:&#92;&quot;miRFP&#92;&quot;,&#92;&quot;power&#92;&quot;:null,&#92;&quot;property_name&#92;&quot;:null},{&#92;&quot;device_name&#92;&quot;:null,&#92;&quot;exposure&#92;&quot;:200,&#92;&quot;group&#92;&quot;:null,&#92;&quot;name&#92;&quot;:&#92;&quot;mScarlet3&#92;&quot;,&#92;&quot;power&#92;&quot;:null,&#92;&quot;property_name&#92;&quot;:null}],&#92;&quot;fname&#92;&quot;:&#92;&quot;020_00004&#92;&quot;,&#92;&quot;optocheck&#92;&quot;:false,&#92;&quot;optocheck_channels&#92;&quot;:[{&#92;&quot;device_name&#92;&quot;:null,&#92;&quot;exposure&#92;&quot;:600,&#92;&quot;group&#92;&quot;:null,&#92;&quot;name&#92;&quot;:&#92;&quot;mCitrine&#92;&quot;,&#92;&quot;power&#92;&quot;:null,&#92;&quot;property_name&#92;&quot;:null}],&#92;&quot;ramp_pattern_name&#92;&quot;:&#92;&quot;3-2-1minIntervals&#92;&quot;,&#92;&quot;stim_timestep&#92;&quot;:[10,13,16,19,22,25,28,31,34,37,40,43,46,49,52,55,58,61,64,67,70,72,74,76,78,80,82,84,86,88,90,92,94,96,98,100,102,104,106,108,110,112,114,116,118,120,122,124,126,128,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,165,166,167,168,169,170,171,172,173,174,175,176,177,178,179,180,181,182,183,184,185,186,187,188,189,190],&#92;&quot;stim_exposure_list&#92;&quot;:[50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50],&#92;&quot;stim_power&#92;&quot;:10,&#92;&quot;stim_channel_name&#92;&quot;:&#92;&quot;CyanStim&#92;&quot;,&#92;&quot;stim_channel_group&#92;&quot;:&#92;&quot;TTL_ERK&#92;&quot;,&#92;&quot;stim_channel_device_name&#92;&quot;:&#92;&quot;Spectra&#92;&quot;,&#92;&quot;stim_channel_power_property_name&#92;&quot;:&#92;&quot;Cyan_Level&#92;&quot;,&#92;&quot;stim_exposure&#92;&quot;:0.0,&#92;&quot;stim&#92;&quot;:false,&#92;&quot;optocheck_mean_intensity&#92;&quot;:1741.0445103857567,&#92;&quot;frame&#92;&quot;:4,&#92;&quot;cnr_median_norm&#92;&quot;:0.9962985780420158,&#92;&quot;cnr_mean_norm&#92;&quot;:1.0086051631943234,&#92;&quot;median_cnr_0_9&#92;&quot;:0.5466436537716708,&#92;&quot;energy_uJ&#92;&quot;:0.0,&#92;&quot;fluence_mJ_cm2&#92;&quot;:0.0,&#92;&quot;energy_per_cell&#92;&quot;:0.0,&#92;&quot;u_t&#92;&quot;:0.0,&#92;&quot;m_t&#92;&quot;:0,&#92;&quot;recency&#92;&quot;:0.0,&#92;&quot;burst_pos&#92;&quot;:0,&#92;&quot;n_5&#92;&quot;:0,&#92;&quot;slope_5&#92;&quot;:0.0},{&#92;&quot;mean_intensity_C0_nuc&#92;&quot;:1062.7963446475196,&#92;&quot;mean_intensity_C1_nuc&#92;&quot;:1544.603133159269,&#92;&quot;label&#92;&quot;:13,&#92;&quot;x&#92;&quot;:207.69451697127937,&#92;&quot;y&#92;&quot;:329.76240208877283,&#92;&quot;area&#92;&quot;:383.0,&#92;&quot;median_intensity_C0_nuc&#92;&quot;:1084.0,&#92;&quot;median_intensity_C1_nuc&#92;&quot;:1572.0,&#92;&quot;mean_intensity_C0_ring&#92;&quot;:449.235632183908,&#92;&quot;mean_intensity_C1_ring&#92;&quot;:845.4080459770115,&#92;&quot;median_intensity_C0_ring&#92;&quot;:446.0,&#92;&quot;median_intensity_C1_ring&#92;&quot;:858.5,&#92;&quot;cnr&#92;&quot;:0.5473302674505444,&#92;&quot;cnr_median&#92;&quot;:0.5461195928753181,&#92;&quot;particle&#92;&quot;:10,&#92;&quot;fov&#92;&quot;:20,&#92;&quot;fov_x&#92;&quot;:9747.7,&#92;&quot;fov_y&#92;&quot;:-11250.5,&#92;&quot;fov_name&#92;&quot;:&#92;&quot;20&#92;&quot;,&#92;&quot;timestep&#92;&quot;:5,&#92;&quot;time&#92;&quot;:12900.0,&#92;&quot;cell_line&#92;&quot;:&#92;&quot;EGFR&#92;&quot;,&#92;&quot;channels&#92;&quot;:[{&#92;&quot;device_name&#92;&quot;:null,&#92;&quot;exposure&#92;&quot;:300,&#92;&quot;group&#92;&quot;:null,&#92;&quot;name&#92;&quot;:&#92;&quot;miRFP&#92;&quot;,&#92;&quot;power&#92;&quot;:null,&#92;&quot;property_name&#92;&quot;:null},{&#92;&quot;device_name&#92;&quot;:null,&#92;&quot;exposure&#92;&quot;:200,&#92;&quot;group&#92;&quot;:null,&#92;&quot;name&#92;&quot;:&#92;&quot;mScarlet3&#92;&quot;,&#92;&quot;power&#92;&quot;:null,&#92;&quot;property_name&#92;&quot;:null}],&#92;&quot;fname&#92;&quot;:&#92;&quot;020_00005&#92;&quot;,&#92;&quot;optocheck&#92;&quot;:false,&#92;&quot;optocheck_channels&#92;&quot;:[{&#92;&quot;device_name&#92;&quot;:null,&#92;&quot;exposure&#92;&quot;:600,&#92;&quot;group&#92;&quot;:null,&#92;&quot;name&#92;&quot;:&#92;&quot;mCitrine&#92;&quot;,&#92;&quot;power&#92;&quot;:null,&#92;&quot;property_name&#92;&quot;:null}],&#92;&quot;ramp_pattern_name&#92;&quot;:&#92;&quot;3-2-1minIntervals&#92;&quot;,&#92;&quot;stim_timestep&#92;&quot;:[10,13,16,19,22,25,28,31,34,37,40,43,46,49,52,55,58,61,64,67,70,72,74,76,78,80,82,84,86,88,90,92,94,96,98,100,102,104,106,108,110,112,114,116,118,120,122,124,126,128,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,165,166,167,168,169,170,171,172,173,174,175,176,177,178,179,180,181,182,183,184,185,186,187,188,189,190],&#92;&quot;stim_exposure_list&#92;&quot;:[50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50],&#92;&quot;stim_power&#92;&quot;:10,&#92;&quot;stim_channel_name&#92;&quot;:&#92;&quot;CyanStim&#92;&quot;,&#92;&quot;stim_channel_group&#92;&quot;:&#92;&quot;TTL_ERK&#92;&quot;,&#92;&quot;stim_channel_device_name&#92;&quot;:&#92;&quot;Spectra&#92;&quot;,&#92;&quot;stim_channel_power_property_name&#92;&quot;:&#92;&quot;Cyan_Level&#92;&quot;,&#92;&quot;stim_exposure&#92;&quot;:0.0,&#92;&quot;stim&#92;&quot;:false,&#92;&quot;optocheck_mean_intensity&#92;&quot;:1741.0445103857567,&#92;&quot;frame&#92;&quot;:5,&#92;&quot;cnr_median_norm&#92;&quot;:0.9780663847097122,&#92;&quot;cnr_mean_norm&#92;&quot;:1.0012560535078678,&#92;&quot;median_cnr_0_9&#92;&quot;:0.5466436537716708,&#92;&quot;energy_uJ&#92;&quot;:0.0,&#92;&quot;fluence_mJ_cm2&#92;&quot;:0.0,&#92;&quot;energy_per_cell&#92;&quot;:0.0,&#92;&quot;u_t&#92;&quot;:0.0,&#92;&quot;m_t&#92;&quot;:0,&#92;&quot;recency&#92;&quot;:0.0,&#92;&quot;burst_pos&#92;&quot;:0,&#92;&quot;n_5&#92;&quot;:0,&#92;&quot;slope_5&#92;&quot;:0.0},{&#92;&quot;mean_intensity_C0_nuc&#92;&quot;:1100.3565891472867,&#92;&quot;mean_intensity_C1_nuc&#92;&quot;:1542.2273901808785,&#92;&quot;label&#92;&quot;:11,&#92;&quot;x&#92;&quot;:207.16537467700257,&#92;&quot;y&#92;&quot;:329.6950904392765,&#92;&quot;area&#92;&quot;:387.0,&#92;&quot;median_intensity_C0_nuc&#92;&quot;:1141.0,&#92;&quot;median_intensity_C1_nuc&#92;&quot;:1584.0,&#92;&quot;mean_intensity_C0_ring&#92;&quot;:418.3468208092485,&#92;&quot;mean_intensity_C1_ring&#92;&quot;:845.9653179190751,&#92;&quot;median_intensity_C0_ring&#92;&quot;:418.0,&#92;&quot;median_intensity_C1_ring&#92;&quot;:884.0,&#92;&quot;cnr&#92;&quot;:0.5485347512988061,&#92;&quot;cnr_median&#92;&quot;:0.5580808080808081,&#92;&quot;particle&#92;&quot;:10,&#92;&quot;fov&#92;&quot;:20,&#92;&quot;fov_x&#92;&quot;:9747.7,&#92;&quot;fov_y&#92;&quot;:-11250.5,&#92;&quot;fov_name&#92;&quot;:&#92;&quot;20&#92;&quot;,&#92;&quot;timestep&#92;&quot;:6,&#92;&quot;time&#92;&quot;:12960.0,&#92;&quot;cell_line&#92;&quot;:&#92;&quot;EGFR&#92;&quot;,&#92;&quot;channels&#92;&quot;:[{&#92;&quot;device_name&#92;&quot;:null,&#92;&quot;exposure&#92;&quot;:300,&#92;&quot;group&#92;&quot;:null,&#92;&quot;name&#92;&quot;:&#92;&quot;miRFP&#92;&quot;,&#92;&quot;power&#92;&quot;:null,&#92;&quot;property_name&#92;&quot;:null},{&#92;&quot;device_name&#92;&quot;:null,&#92;&quot;exposure&#92;&quot;:200,&#92;&quot;group&#92;&quot;:null,&#92;&quot;name&#92;&quot;:&#92;&quot;mScarlet3&#92;&quot;,&#92;&quot;power&#92;&quot;:null,&#92;&quot;property_name&#92;&quot;:null}],&#92;&quot;fname&#92;&quot;:&#92;&quot;020_00006&#92;&quot;,&#92;&quot;optocheck&#92;&quot;:false,&#92;&quot;optocheck_channels&#92;&quot;:[{&#92;&quot;device_name&#92;&quot;:null,&#92;&quot;exposure&#92;&quot;:600,&#92;&quot;group&#92;&quot;:null,&#92;&quot;name&#92;&quot;:&#92;&quot;mCitrine&#92;&quot;,&#92;&quot;power&#92;&quot;:null,&#92;&quot;property_name&#92;&quot;:null}],&#92;&quot;ramp_pattern_name&#92;&quot;:&#92;&quot;3-2-1minIntervals&#92;&quot;,&#92;&quot;stim_timestep&#92;&quot;:[10,13,16,19,22,25,28,31,34,37,40,43,46,49,52,55,58,61,64,67,70,72,74,76,78,80,82,84,86,88,90,92,94,96,98,100,102,104,106,108,110,112,114,116,118,120,122,124,126,128,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,165,166,167,168,169,170,171,172,173,174,175,176,177,178,179,180,181,182,183,184,185,186,187,188,189,190],&#92;&quot;stim_exposure_list&#92;&quot;:[50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50],&#92;&quot;stim_power&#92;&quot;:10,&#92;&quot;stim_channel_name&#92;&quot;:&#92;&quot;CyanStim&#92;&quot;,&#92;&quot;stim_channel_group&#92;&quot;:&#92;&quot;TTL_ERK&#92;&quot;,&#92;&quot;stim_channel_device_name&#92;&quot;:&#92;&quot;Spectra&#92;&quot;,&#92;&quot;stim_channel_power_property_name&#92;&quot;:&#92;&quot;Cyan_Level&#92;&quot;,&#92;&quot;stim_exposure&#92;&quot;:0.0,&#92;&quot;stim&#92;&quot;:false,&#92;&quot;optocheck_mean_intensity&#92;&quot;:1741.0445103857567,&#92;&quot;frame&#92;&quot;:6,&#92;&quot;cnr_median_norm&#92;&quot;:0.9994881807144553,&#92;&quot;cnr_mean_norm&#92;&quot;:1.003459470377251,&#92;&quot;median_cnr_0_9&#92;&quot;:0.5466436537716708,&#92;&quot;energy_uJ&#92;&quot;:0.0,&#92;&quot;fluence_mJ_cm2&#92;&quot;:0.0,&#92;&quot;energy_per_cell&#92;&quot;:0.0,&#92;&quot;u_t&#92;&quot;:0.0,&#92;&quot;m_t&#92;&quot;:0,&#92;&quot;recency&#92;&quot;:0.0,&#92;&quot;burst_pos&#92;&quot;:0,&#92;&quot;n_5&#92;&quot;:0,&#92;&quot;slope_5&#92;&quot;:0.0},{&#92;&quot;mean_intensity_C0_nuc&#92;&quot;:1058.6285714285714,&#92;&quot;mean_intensity_C1_nuc&#92;&quot;:1563.638961038961,&#92;&quot;label&#92;&quot;:12,&#92;&quot;x&#92;&quot;:207.66233766233765,&#92;&quot;y&#92;&quot;:329.94805194805195,&#92;&quot;area&#92;&quot;:385.0,&#92;&quot;median_intensity_C0_nuc&#92;&quot;:1085.0,&#92;&quot;median_intensity_C1_nuc&#92;&quot;:1601.0,&#92;&quot;mean_intensity_C0_ring&#92;&quot;:445.1111111111111,&#92;&quot;mean_intensity_C1_ring&#92;&quot;:865.1695906432749,&#92;&quot;median_intensity_C0_ring&#92;&quot;:442.0,&#92;&quot;median_intensity_C1_ring&#92;&quot;:910.0,&#92;&quot;cnr&#92;&quot;:0.5533052144392797,&#92;&quot;cnr_median&#92;&quot;:0.5683947532792005,&#92;&quot;particle&#92;&quot;:10,&#92;&quot;fov&#92;&quot;:20,&#92;&quot;fov_x&#92;&quot;:9747.7,&#92;&quot;fov_y&#92;&quot;:-11250.5,&#92;&quot;fov_name&#92;&quot;:&#92;&quot;20&#92;&quot;,&#92;&quot;timestep&#92;&quot;:7,&#92;&quot;time&#92;&quot;:13020.0,&#92;&quot;cell_line&#92;&quot;:&#92;&quot;EGFR&#92;&quot;,&#92;&quot;channels&#92;&quot;:[{&#92;&quot;device_name&#92;&quot;:null,&#92;&quot;exposure&#92;&quot;:300,&#92;&quot;group&#92;&quot;:null,&#92;&quot;name&#92;&quot;:&#92;&quot;miRFP&#92;&quot;,&#92;&quot;power&#92;&quot;:null,&#92;&quot;property_name&#92;&quot;:null},{&#92;&quot;device_name&#92;&quot;:null,&#92;&quot;exposure&#92;&quot;:200,&#92;&quot;group&#92;&quot;:null,&#92;&quot;name&#92;&quot;:&#92;&quot;mScarlet3&#92;&quot;,&#92;&quot;power&#92;&quot;:null,&#92;&quot;property_name&#92;&quot;:null}],&#92;&quot;fname&#92;&quot;:&#92;&quot;020_00007&#92;&quot;,&#92;&quot;optocheck&#92;&quot;:false,&#92;&quot;optocheck_channels&#92;&quot;:[{&#92;&quot;device_name&#92;&quot;:null,&#92;&quot;exposure&#92;&quot;:600,&#92;&quot;group&#92;&quot;:null,&#92;&quot;name&#92;&quot;:&#92;&quot;mCitrine&#92;&quot;,&#92;&quot;power&#92;&quot;:null,&#92;&quot;property_name&#92;&quot;:null}],&#92;&quot;ramp_pattern_name&#92;&quot;:&#92;&quot;3-2-1minIntervals&#92;&quot;,&#92;&quot;stim_timestep&#92;&quot;:[10,13,16,19,22,25,28,31,34,37,40,43,46,49,52,55,58,61,64,67,70,72,74,76,78,80,82,84,86,88,90,92,94,96,98,100,102,104,106,108,110,112,114,116,118,120,122,124,126,128,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,165,166,167,168,169,170,171,172,173,174,175,176,177,178,179,180,181,182,183,184,185,186,187,188,189,190],&#92;&quot;stim_exposure_list&#92;&quot;:[50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50],&#92;&quot;stim_power&#92;&quot;:10,&#92;&quot;stim_channel_name&#92;&quot;:&#92;&quot;CyanStim&#92;&quot;,&#92;&quot;stim_channel_group&#92;&quot;:&#92;&quot;TTL_ERK&#92;&quot;,&#92;&quot;stim_channel_device_name&#92;&quot;:&#92;&quot;Spectra&#92;&quot;,&#92;&quot;stim_channel_power_property_name&#92;&quot;:&#92;&quot;Cyan_Level&#92;&quot;,&#92;&quot;stim_exposure&#92;&quot;:0.0,&#92;&quot;stim&#92;&quot;:false,&#92;&quot;optocheck_mean_intensity&#92;&quot;:1741.0445103857567,&#92;&quot;frame&#92;&quot;:7,&#92;&quot;cnr_median_norm&#92;&quot;:1.0179598181065035,&#92;&quot;cnr_mean_norm&#92;&quot;:1.012186294712554,&#92;&quot;median_cnr_0_9&#92;&quot;:0.5466436537716708,&#92;&quot;energy_uJ&#92;&quot;:0.0,&#92;&quot;fluence_mJ_cm2&#92;&quot;:0.0,&#92;&quot;energy_per_cell&#92;&quot;:0.0,&#92;&quot;u_t&#92;&quot;:0.0,&#92;&quot;m_t&#92;&quot;:0,&#92;&quot;recency&#92;&quot;:0.0,&#92;&quot;burst_pos&#92;&quot;:0,&#92;&quot;n_5&#92;&quot;:0,&#92;&quot;slope_5&#92;&quot;:0.0},{&#92;&quot;mean_intensity_C0_nuc&#92;&quot;:1132.9678284182305,&#92;&quot;mean_intensity_C1_nuc&#92;&quot;:1622.3243967828419,&#92;&quot;label&#92;&quot;:11,&#92;&quot;x&#92;&quot;:207.82037533512064,&#92;&quot;y&#92;&quot;:330.2707774798928,&#92;&quot;area&#92;&quot;:373.0,&#92;&quot;median_intensity_C0_nuc&#92;&quot;:1167.0,&#92;&quot;median_intensity_C1_nuc&#92;&quot;:1660.0,&#92;&quot;mean_intensity_C0_ring&#92;&quot;:431.5263157894737,&#92;&quot;mean_intensity_C1_ring&#92;&quot;:889.1286549707602,&#92;&quot;median_intensity_C0_ring&#92;&quot;:425.0,&#92;&quot;median_intensity_C1_ring&#92;&quot;:939.0,&#92;&quot;cnr&#92;&quot;:0.5480584873986676,&#92;&quot;cnr_median&#92;&quot;:0.5656626506024096,&#92;&quot;particle&#92;&quot;:10,&#92;&quot;fov&#92;&quot;:20,&#92;&quot;fov_x&#92;&quot;:9747.7,&#92;&quot;fov_y&#92;&quot;:-11250.5,&#92;&quot;fov_name&#92;&quot;:&#92;&quot;20&#92;&quot;,&#92;&quot;timestep&#92;&quot;:8,&#92;&quot;time&#92;&quot;:13080.0,&#92;&quot;cell_line&#92;&quot;:&#92;&quot;EGFR&#92;&quot;,&#92;&quot;channels&#92;&quot;:[{&#92;&quot;device_name&#92;&quot;:null,&#92;&quot;exposure&#92;&quot;:300,&#92;&quot;group&#92;&quot;:null,&#92;&quot;name&#92;&quot;:&#92;&quot;miRFP&#92;&quot;,&#92;&quot;power&#92;&quot;:null,&#92;&quot;property_name&#92;&quot;:null},{&#92;&quot;device_name&#92;&quot;:null,&#92;&quot;exposure&#92;&quot;:200,&#92;&quot;group&#92;&quot;:null,&#92;&quot;name&#92;&quot;:&#92;&quot;mScarlet3&#92;&quot;,&#92;&quot;power&#92;&quot;:null,&#92;&quot;property_name&#92;&quot;:null}],&#92;&quot;fname&#92;&quot;:&#92;&quot;020_00008&#92;&quot;,&#92;&quot;optocheck&#92;&quot;:false,&#92;&quot;optocheck_channels&#92;&quot;:[{&#92;&quot;device_name&#92;&quot;:null,&#92;&quot;exposure&#92;&quot;:600,&#92;&quot;group&#92;&quot;:null,&#92;&quot;name&#92;&quot;:&#92;&quot;mCitrine&#92;&quot;,&#92;&quot;power&#92;&quot;:null,&#92;&quot;property_name&#92;&quot;:null}],&#92;&quot;ramp_pattern_name&#92;&quot;:&#92;&quot;3-2-1minIntervals&#92;&quot;,&#92;&quot;stim_timestep&#92;&quot;:[10,13,16,19,22,25,28,31,34,37,40,43,46,49,52,55,58,61,64,67,70,72,74,76,78,80,82,84,86,88,90,92,94,96,98,100,102,104,106,108,110,112,114,116,118,120,122,124,126,128,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,165,166,167,168,169,170,171,172,173,174,175,176,177,178,179,180,181,182,183,184,185,186,187,188,189,190],&#92;&quot;stim_exposure_list&#92;&quot;:[50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50],&#92;&quot;stim_power&#92;&quot;:10,&#92;&quot;stim_channel_name&#92;&quot;:&#92;&quot;CyanStim&#92;&quot;,&#92;&quot;stim_channel_group&#92;&quot;:&#92;&quot;TTL_ERK&#92;&quot;,&#92;&quot;stim_channel_device_name&#92;&quot;:&#92;&quot;Spectra&#92;&quot;,&#92;&quot;stim_channel_power_property_name&#92;&quot;:&#92;&quot;Cyan_Level&#92;&quot;,&#92;&quot;stim_exposure&#92;&quot;:0.0,&#92;&quot;stim&#92;&quot;:false,&#92;&quot;optocheck_mean_intensity&#92;&quot;:1741.0445103857567,&#92;&quot;frame&#92;&quot;:8,&#92;&quot;cnr_median_norm&#92;&quot;:1.0130667913361662,&#92;&quot;cnr_mean_norm&#92;&quot;:1.002588219248929,&#92;&quot;median_cnr_0_9&#92;&quot;:0.5466436537716708,&#92;&quot;energy_uJ&#92;&quot;:0.0,&#92;&quot;fluence_mJ_cm2&#92;&quot;:0.0,&#92;&quot;energy_per_cell&#92;&quot;:0.0,&#92;&quot;u_t&#92;&quot;:0.0,&#92;&quot;m_t&#92;&quot;:0,&#92;&quot;recency&#92;&quot;:0.0,&#92;&quot;burst_pos&#92;&quot;:0,&#92;&quot;n_5&#92;&quot;:0,&#92;&quot;slope_5&#92;&quot;:0.0},{&#92;&quot;mean_intensity_C0_nuc&#92;&quot;:1117.3559782608695,&#92;&quot;mean_intensity_C1_nuc&#92;&quot;:1607.546195652174,&#92;&quot;label&#92;&quot;:11,&#92;&quot;x&#92;&quot;:207.9483695652174,&#92;&quot;y&#92;&quot;:330.08152173913044,&#92;&quot;area&#92;&quot;:368.0,&#92;&quot;median_intensity_C0_nuc&#92;&quot;:1141.0,&#92;&quot;median_intensity_C1_nuc&#92;&quot;:1632.5,&#92;&quot;mean_intensity_C0_ring&#92;&quot;:423.84302325581393,&#92;&quot;mean_intensity_C1_ring&#92;&quot;:877.6511627906976,&#92;&quot;median_intensity_C0_ring&#92;&quot;:420.0,&#92;&quot;median_intensity_C1_ring&#92;&quot;:912.0,&#92;&quot;cnr&#92;&quot;:0.5459570400927972,&#92;&quot;cnr_median&#92;&quot;:0.5586523736600306,&#92;&quot;particle&#92;&quot;:10,&#92;&quot;fov&#92;&quot;:20,&#92;&quot;fov_x&#92;&quot;:9747.7,&#92;&quot;fov_y&#92;&quot;:-11250.5,&#92;&quot;fov_name&#92;&quot;:&#92;&quot;20&#92;&quot;,&#92;&quot;timestep&#92;&quot;:9,&#92;&quot;time&#92;&quot;:13140.0,&#92;&quot;cell_line&#92;&quot;:&#92;&quot;EGFR&#92;&quot;,&#92;&quot;channels&#92;&quot;:[{&#92;&quot;device_name&#92;&quot;:null,&#92;&quot;exposure&#92;&quot;:300,&#92;&quot;group&#92;&quot;:null,&#92;&quot;name&#92;&quot;:&#92;&quot;miRFP&#92;&quot;,&#92;&quot;power&#92;&quot;:null,&#92;&quot;property_name&#92;&quot;:null},{&#92;&quot;device_name&#92;&quot;:null,&#92;&quot;exposure&#92;&quot;:200,&#92;&quot;group&#92;&quot;:null,&#92;&quot;name&#92;&quot;:&#92;&quot;mScarlet3&#92;&quot;,&#92;&quot;power&#92;&quot;:null,&#92;&quot;property_name&#92;&quot;:null}],&#92;&quot;fname&#92;&quot;:&#92;&quot;020_00009&#92;&quot;,&#92;&quot;optocheck&#92;&quot;:false,&#92;&quot;optocheck_channels&#92;&quot;:[{&#92;&quot;device_name&#92;&quot;:null,&#92;&quot;exposure&#92;&quot;:600,&#92;&quot;group&#92;&quot;:null,&#92;&quot;name&#92;&quot;:&#92;&quot;mCitrine&#92;&quot;,&#92;&quot;power&#92;&quot;:null,&#92;&quot;property_name&#92;&quot;:null}],&#92;&quot;ramp_pattern_name&#92;&quot;:&#92;&quot;3-2-1minIntervals&#92;&quot;,&#92;&quot;stim_timestep&#92;&quot;:[10,13,16,19,22,25,28,31,34,37,40,43,46,49,52,55,58,61,64,67,70,72,74,76,78,80,82,84,86,88,90,92,94,96,98,100,102,104,106,108,110,112,114,116,118,120,122,124,126,128,130,131,132,133,134,135,136,137,138,139,140,141,142,143,144,145,146,147,148,149,150,151,152,153,154,155,156,157,158,159,160,161,162,163,164,165,166,167,168,169,170,171,172,173,174,175,176,177,178,179,180,181,182,183,184,185,186,187,188,189,190],&#92;&quot;stim_exposure_list&#92;&quot;:[50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50,50],&#92;&quot;stim_power&#92;&quot;:10,&#92;&quot;stim_channel_name&#92;&quot;:&#92;&quot;CyanStim&#92;&quot;,&#92;&quot;stim_channel_group&#92;&quot;:&#92;&quot;TTL_ERK&#92;&quot;,&#92;&quot;stim_channel_device_name&#92;&quot;:&#92;&quot;Spectra&#92;&quot;,&#92;&quot;stim_channel_power_property_name&#92;&quot;:&#92;&quot;Cyan_Level&#92;&quot;,&#92;&quot;stim_exposure&#92;&quot;:0.0,&#92;&quot;stim&#92;&quot;:false,&#92;&quot;optocheck_mean_intensity&#92;&quot;:1741.0445103857567,&#92;&quot;frame&#92;&quot;:9,&#92;&quot;cnr_median_norm&#92;&quot;:1.0005118192855444,&#92;&quot;cnr_mean_norm&#92;&quot;:0.9987439464921322,&#92;&quot;median_cnr_0_9&#92;&quot;:0.5466436537716708,&#92;&quot;energy_uJ&#92;&quot;:0.0,&#92;&quot;fluence_mJ_cm2&#92;&quot;:0.0,&#92;&quot;energy_per_cell&#92;&quot;:0.0,&#92;&quot;u_t&#92;&quot;:0.0,&#92;&quot;m_t&#92;&quot;:0,&#92;&quot;recency&#92;&quot;:0.0,&#92;&quot;burst_pos&#92;&quot;:0,&#92;&quot;n_5&#92;&quot;:0,&#92;&quot;slope_5&#92;&quot;:0.0}]&quot;' data-total-rows='274674' data-total-columns='54' data-max-columns='50' data-banner-text='&quot;Only showing 50 of 54 columns.&quot;' data-pagination='true' data-page-size='10' data-field-types='[[&quot;mean_intensity_C0_nuc&quot;,[&quot;number&quot;,&quot;float64&quot;]],[&quot;mean_intensity_C1_nuc&quot;,[&quot;number&quot;,&quot;float64&quot;]],[&quot;label&quot;,[&quot;integer&quot;,&quot;uint32&quot;]],[&quot;x&quot;,[&quot;number&quot;,&quot;float64&quot;]],[&quot;y&quot;,[&quot;number&quot;,&quot;float64&quot;]],[&quot;area&quot;,[&quot;number&quot;,&quot;float64&quot;]],[&quot;median_intensity_C0_nuc&quot;,[&quot;number&quot;,&quot;float64&quot;]],[&quot;median_intensity_C1_nuc&quot;,[&quot;number&quot;,&quot;float64&quot;]],[&quot;mean_intensity_C0_ring&quot;,[&quot;number&quot;,&quot;float64&quot;]],[&quot;mean_intensity_C1_ring&quot;,[&quot;number&quot;,&quot;float64&quot;]],[&quot;median_intensity_C0_ring&quot;,[&quot;number&quot;,&quot;float64&quot;]],[&quot;median_intensity_C1_ring&quot;,[&quot;number&quot;,&quot;float64&quot;]],[&quot;cnr&quot;,[&quot;number&quot;,&quot;float64&quot;]],[&quot;cnr_median&quot;,[&quot;number&quot;,&quot;float64&quot;]],[&quot;particle&quot;,[&quot;integer&quot;,&quot;uint32&quot;]],[&quot;fov&quot;,[&quot;integer&quot;,&quot;uint16&quot;]],[&quot;fov_x&quot;,[&quot;number&quot;,&quot;float64&quot;]],[&quot;fov_y&quot;,[&quot;number&quot;,&quot;float64&quot;]],[&quot;fov_name&quot;,[&quot;string&quot;,&quot;str&quot;]],[&quot;timestep&quot;,[&quot;integer&quot;,&quot;uint32&quot;]],[&quot;time&quot;,[&quot;number&quot;,&quot;float32&quot;]],[&quot;cell_line&quot;,[&quot;string&quot;,&quot;str&quot;]],[&quot;channels&quot;,[&quot;string&quot;,&quot;object&quot;]],[&quot;fname&quot;,[&quot;string&quot;,&quot;str&quot;]],[&quot;optocheck&quot;,[&quot;boolean&quot;,&quot;bool&quot;]],[&quot;optocheck_channels&quot;,[&quot;string&quot;,&quot;object&quot;]],[&quot;ramp_pattern_name&quot;,[&quot;string&quot;,&quot;str&quot;]],[&quot;stim_timestep&quot;,[&quot;string&quot;,&quot;object&quot;]],[&quot;stim_exposure_list&quot;,[&quot;string&quot;,&quot;object&quot;]],[&quot;stim_power&quot;,[&quot;integer&quot;,&quot;int64&quot;]],[&quot;stim_channel_name&quot;,[&quot;string&quot;,&quot;str&quot;]],[&quot;stim_channel_group&quot;,[&quot;string&quot;,&quot;str&quot;]],[&quot;stim_channel_device_name&quot;,[&quot;string&quot;,&quot;str&quot;]],[&quot;stim_channel_power_property_name&quot;,[&quot;string&quot;,&quot;str&quot;]],[&quot;stim_exposure&quot;,[&quot;number&quot;,&quot;float32&quot;]],[&quot;stim&quot;,[&quot;boolean&quot;,&quot;bool&quot;]],[&quot;optocheck_mean_intensity&quot;,[&quot;number&quot;,&quot;float64&quot;]],[&quot;frame&quot;,[&quot;integer&quot;,&quot;uint32&quot;]],[&quot;cnr_median_norm&quot;,[&quot;number&quot;,&quot;float64&quot;]],[&quot;cnr_mean_norm&quot;,[&quot;number&quot;,&quot;float64&quot;]],[&quot;median_cnr_0_9&quot;,[&quot;number&quot;,&quot;float64&quot;]],[&quot;energy_uJ&quot;,[&quot;number&quot;,&quot;float64&quot;]],[&quot;fluence_mJ_cm2&quot;,[&quot;number&quot;,&quot;float64&quot;]],[&quot;energy_per_cell&quot;,[&quot;number&quot;,&quot;float64&quot;]],[&quot;u_t&quot;,[&quot;number&quot;,&quot;float64&quot;]],[&quot;m_t&quot;,[&quot;integer&quot;,&quot;int64&quot;]],[&quot;recency&quot;,[&quot;number&quot;,&quot;float64&quot;]],[&quot;burst_pos&quot;,[&quot;integer&quot;,&quot;int64&quot;]],[&quot;n_5&quot;,[&quot;integer&quot;,&quot;int64&quot;]],[&quot;slope_5&quot;,[&quot;number&quot;,&quot;float64&quot;]],[&quot;uid&quot;,[&quot;string&quot;,&quot;str&quot;]],[&quot;ewma_fast&quot;,[&quot;number&quot;,&quot;float64&quot;]],[&quot;ewma_slow&quot;,[&quot;number&quot;,&quot;float64&quot;]],[&quot;s_cum&quot;,[&quot;number&quot;,&quot;float64&quot;]]]' data-show-filters='true' data-show-download='true' data-show-column-summaries='false' data-show-data-types='true' data-show-page-size-selector='true' data-show-column-explorer='true' data-show-chart-builder='true' data-row-headers='[]' data-has-stable-row-id='false' data-lazy='false' data-preload='false'></marimo-table></marimo-ui-element>"
+          }
+        }
+      ],
+      "console": [
+        {
+          "type": "stream",
+          "name": "stderr",
+          "text": "\u001b[34m[D 260503 23:57:42 cell_runner:779]\u001b(B\u001b[m Running post_execution hooks in context\n\u001b[34m[D 260503 23:57:42 hooks_post_execution:75]\u001b(B\u001b[m Acquiring graph lock to update cell import workspace\n\u001b[34m[D 260503 23:57:42 hooks_post_execution:77]\u001b(B\u001b[m Acquired graph lock to update import workspace.\n",
+          "mimetype": "text/plain"
+        }
+      ]
+    },
+    {
+      "id": "bkHC",
+      "code_hash": "90819e91fd9ae9c6935789872d33f321",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "application/json": "[\"text/html:<marimo-ui-element object-id='bkHC-0' random-id='8a28579e-900d-fc59-5f31-1d7b00357ffe'><marimo-table data-initial-value='[]' data-label='null' data-data='&quot;[{&#92;&quot;ramp_pattern_name&#92;&quot;:&#92;&quot;3-2-1minIntervals&#92;&quot;,&#92;&quot;frame&#92;&quot;:209},{&#92;&quot;ramp_pattern_name&#92;&quot;:&#92;&quot;Single&#92;&quot;,&#92;&quot;frame&#92;&quot;:39},{&#92;&quot;ramp_pattern_name&#92;&quot;:&#92;&quot;Sustained&#92;&quot;,&#92;&quot;frame&#92;&quot;:119},{&#92;&quot;ramp_pattern_name&#92;&quot;:&#92;&quot;ramp1&#92;&quot;,&#92;&quot;frame&#92;&quot;:179}]&quot;' data-total-rows='4' data-total-columns='1' data-max-columns='50' data-banner-text='&quot;&quot;' data-pagination='false' data-page-size='10' data-field-types='[[&quot;frame&quot;,[&quot;integer&quot;,&quot;uint32&quot;]]]' data-show-filters='true' data-show-download='true' data-show-column-summaries='false' data-show-data-types='true' data-show-page-size-selector='false' data-show-column-explorer='true' data-show-chart-builder='true' data-row-headers='[[&quot;ramp_pattern_name&quot;,[&quot;string&quot;,&quot;str&quot;]]]' data-has-stable-row-id='false' data-lazy='false' data-preload='false'></marimo-table></marimo-ui-element>\", \"text/html:<marimo-ui-element object-id='bkHC-1' random-id='42888a87-97f1-0b71-a509-fbb7643eb939'><marimo-table data-initial-value='[]' data-label='null' data-data='&quot;[{&#92;&quot;ramp_pattern_name&#92;&quot;:&#92;&quot;3-2-1minIntervals&#92;&quot;,&#92;&quot;uid&#92;&quot;:141016},{&#92;&quot;ramp_pattern_name&#92;&quot;:&#92;&quot;Single&#92;&quot;,&#92;&quot;uid&#92;&quot;:14716},{&#92;&quot;ramp_pattern_name&#92;&quot;:&#92;&quot;Sustained&#92;&quot;,&#92;&quot;uid&#92;&quot;:89613},{&#92;&quot;ramp_pattern_name&#92;&quot;:&#92;&quot;ramp1&#92;&quot;,&#92;&quot;uid&#92;&quot;:29329}]&quot;' data-total-rows='4' data-total-columns='1' data-max-columns='50' data-banner-text='&quot;&quot;' data-pagination='false' data-page-size='10' data-field-types='[[&quot;uid&quot;,[&quot;integer&quot;,&quot;int64&quot;]]]' data-show-filters='true' data-show-download='true' data-show-column-summaries='false' data-show-data-types='true' data-show-page-size-selector='false' data-show-column-explorer='true' data-show-chart-builder='true' data-row-headers='[[&quot;ramp_pattern_name&quot;,[&quot;string&quot;,&quot;str&quot;]]]' data-has-stable-row-id='false' data-lazy='false' data-preload='false'></marimo-table></marimo-ui-element>\"]"
+          }
+        }
+      ],
+      "console": [
+        {
+          "type": "stream",
+          "name": "stderr",
+          "text": "\u001b[34m[D 260503 23:57:42 cell_runner:779]\u001b(B\u001b[m Running post_execution hooks in context\n\u001b[34m[D 260503 23:57:42 hooks_post_execution:75]\u001b(B\u001b[m Acquiring graph lock to update cell import workspace\n\u001b[34m[D 260503 23:57:42 hooks_post_execution:77]\u001b(B\u001b[m Acquired graph lock to update import workspace.\n",
+          "mimetype": "text/plain"
+        }
+      ]
+    },
+    {
+      "id": "lEQa",
+      "code_hash": "d303390b67982d33c1b38d5d1f3f4c7a",
+      "outputs": [],
+      "console": [
+        {
+          "type": "stream",
+          "name": "stderr",
+          "text": "\u001b[34m[D 260503 23:57:42 cell_runner:779]\u001b(B\u001b[m Running post_execution hooks in context\n\u001b[34m[D 260503 23:57:42 hooks_post_execution:75]\u001b(B\u001b[m Acquiring graph lock to update cell import workspace\n\u001b[34m[D 260503 23:57:42 hooks_post_execution:77]\u001b(B\u001b[m Acquired graph lock to update import workspace.\n",
+          "mimetype": "text/plain"
+        }
+      ]
+    },
+    {
+      "id": "PKri",
+      "code_hash": "d5d8566a2328d411e60ce8471aecff25",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/plain": ""
+          }
+        }
+      ],
+      "console": [
+        {
+          "type": "stream",
+          "name": "stdout",
+          "text": "<class 'pandas.DataFrame'>\nRangeIndex: 274674 entries, 0 to 274673\nData columns (total 54 columns):\n #   Column                            Non-Null Count   Dtype  \n---  ------                            --------------   -----  \n 0   mean_intensity_C0_nuc             274674 non-null  float64\n 1   mean_intensity_C1_nuc             274674 non-null  float64\n 2   label                             274674 non-null  uint32 \n 3   x                                 274674 non-null  float64\n 4   y                                 274674 non-null  float64\n 5   area                              274674 non-null  float64\n 6   median_intensity_C0_nuc           274674 non-null  float64\n 7   median_intensity_C1_nuc           274674 non-null  float64\n 8   mean_intensity_C0_ring            274674 non-null  float64\n 9   mean_intensity_C1_ring            274674 non-null  float64\n 10  median_intensity_C0_ring          274674 non-null  float64\n 11  median_intensity_C1_ring          274674 non-null  float64\n 12  cnr                               274674 non-null  float64\n 13  cnr_median                        274674 non-null  float64\n 14  particle                          274674 non-null  uint32 \n 15  fov                               274674 non-null  uint16 \n 16  fov_x                             274674 non-null  float64\n 17  fov_y                             274674 non-null  float64\n 18  fov_name                          274674 non-null  str    \n 19  timestep                          274674 non-null  uint32 \n 20  time                              274674 non-null  float32\n 21  cell_line                         274674 non-null  str    \n 22  channels                          274674 non-null  object \n 23  fname                             274674 non-null  str    \n 24  optocheck                         274674 non-null  bool   \n 25  optocheck_channels                274674 non-null  object \n 26  ramp_pattern_name                 274674 non-null  str    \n 27  stim_timestep                     274674 non-null  object \n 28  stim_exposure_list                274674 non-null  object \n 29  stim_power                        274674 non-null  int64  \n 30  stim_channel_name                 274674 non-null  str    \n 31  stim_channel_group                274674 non-null  str    \n 32  stim_channel_device_name          274674 non-null  str    \n 33  stim_channel_power_property_name  274674 non-null  str    \n 34  stim_exposure                     274674 non-null  float32\n 35  stim                              274674 non-null  bool   \n 36  optocheck_mean_intensity          274674 non-null  float64\n 37  frame                             274674 non-null  uint32 \n 38  cnr_median_norm                   274674 non-null  float64\n 39  cnr_mean_norm                     274674 non-null  float64\n 40  median_cnr_0_9                    274674 non-null  float64\n 41  energy_uJ                         274674 non-null  float64\n 42  fluence_mJ_cm2                    274674 non-null  float64\n 43  energy_per_cell                   274674 non-null  float64\n 44  u_t                               274674 non-null  float64\n 45  m_t                               274674 non-null  int64  \n 46  recency                           274674 non-null  float64\n 47  burst_pos                         274674 non-null  int64  \n 48  n_5                               274674 non-null  int64  \n 49  slope_5                           274674 non-null  float64\n 50  uid                               274674 non-null  str    \n 51  ewma_fast                         274674 non-null  float64\n 52  ewma_slow                         274674 non-null  float64\n 53  s_cum                             274674 non-null  float64\ndtypes: bool(2), float32(2), float64(28), int64(4), object(4), str(9), uint16(1), uint32(4)\nmemory usage: 121.8+ MB\n",
+          "mimetype": "text/plain"
+        },
+        {
+          "type": "stream",
+          "name": "stderr",
+          "text": "\u001b[34m[D 260503 23:57:42 cell_runner:779]\u001b(B\u001b[m Running post_execution hooks in context\n\u001b[34m[D 260503 23:57:42 hooks_post_execution:75]\u001b(B\u001b[m Acquiring graph lock to update cell import workspace\n\u001b[34m[D 260503 23:57:42 hooks_post_execution:77]\u001b(B\u001b[m Acquired graph lock to update import workspace.\n",
+          "mimetype": "text/plain"
+        }
+      ]
+    },
+    {
+      "id": "Xref",
+      "code_hash": "20a08c831d5dc594e6efce707f1b0d13",
+      "outputs": [],
+      "console": []
+    },
+    {
+      "id": "SFPL",
+      "code_hash": "6408a39c2187626e4fe8d800dc9748fb",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/plain": ""
+          }
+        }
+      ],
+      "console": [
+        {
+          "type": "stream",
+          "name": "stderr",
+          "text": "\u001b[34m[D 260503 23:57:47 cell_runner:779]\u001b(B\u001b[m Running post_execution hooks in context\n\u001b[34m[D 260503 23:57:47 hooks_post_execution:75]\u001b(B\u001b[m Acquiring graph lock to update cell import workspace\n\u001b[34m[D 260503 23:57:47 hooks_post_execution:77]\u001b(B\u001b[m Acquired graph lock to update import workspace.\n",
+          "mimetype": "text/plain"
+        }
+      ]
+    },
+    {
+      "id": "BYtC",
+      "code_hash": "16d253628586a404adf824dd5bdddd3d",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "application/json": "[\"fluence_mJ_cm2\", \"ewma_fast\", \"cnr_mean_norm\", \"n_5\", \"median_cnr_0_9\"]"
+          }
+        }
+      ],
+      "console": [
+        {
+          "type": "stream",
+          "name": "stderr",
+          "text": "\u001b[34m[D 260503 23:57:56 cell_runner:779]\u001b(B\u001b[m Running post_execution hooks in context\n\u001b[34m[D 260503 23:57:56 hooks_post_execution:75]\u001b(B\u001b[m Acquiring graph lock to update cell import workspace\n\u001b[34m[D 260503 23:57:56 hooks_post_execution:77]\u001b(B\u001b[m Acquired graph lock to update import workspace.\n",
+          "mimetype": "text/plain"
+        }
+      ]
+    },
+    {
+      "id": "RGSE",
+      "code_hash": "c470828bafb49fed6b73929890b53b4e",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/plain": ""
+          }
+        }
+      ],
+      "console": [
+        {
+          "type": "stream",
+          "name": "stderr",
+          "text": "\u001b[34m[D 260503 23:59:15 cell_runner:779]\u001b(B\u001b[m Running post_execution hooks in context\n\u001b[34m[D 260503 23:59:15 hooks_post_execution:75]\u001b(B\u001b[m Acquiring graph lock to update cell import workspace\n\u001b[34m[D 260503 23:59:15 hooks_post_execution:77]\u001b(B\u001b[m Acquired graph lock to update import workspace.\n",
+          "mimetype": "text/plain"
+        }
+      ]
+    },
+    {
+      "id": "Kclp",
+      "code_hash": "653f6b87d165216488d0124fb13b75c3",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/plain": ""
+          }
+        }
+      ],
+      "console": [
+        {
+          "type": "stream",
+          "name": "stderr",
+          "text": "\u001b[34m[D 260503 23:57:56 cell_runner:779]\u001b(B\u001b[m Running post_execution hooks in context\n\u001b[34m[D 260503 23:57:56 hooks_post_execution:75]\u001b(B\u001b[m Acquiring graph lock to update cell import workspace\n\u001b[34m[D 260503 23:57:56 hooks_post_execution:77]\u001b(B\u001b[m Acquired graph lock to update import workspace.\n",
+          "mimetype": "text/plain"
+        }
+      ]
+    },
+    {
+      "id": "emfo",
+      "code_hash": "b8f64de956a6bd61de62b114af756c1c",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<pre class='text-xs'>device(type=&#x27;cuda&#x27;)</pre>"
+          }
+        }
+      ],
+      "console": [
+        {
+          "type": "stream",
+          "name": "stderr",
+          "text": "\u001b[34m[D 260503 23:57:59 cell_runner:779]\u001b(B\u001b[m Running post_execution hooks in context\n\u001b[34m[D 260503 23:57:59 hooks_post_execution:75]\u001b(B\u001b[m Acquiring graph lock to update cell import workspace\n\u001b[34m[D 260503 23:57:59 hooks_post_execution:77]\u001b(B\u001b[m Acquired graph lock to update import workspace.\n",
+          "mimetype": "text/plain"
+        }
+      ]
+    },
+    {
+      "id": "Hstk",
+      "code_hash": "5e239b97d74a0066f4250d709e095f25",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/plain": ""
+          }
+        }
+      ],
+      "console": [
+        {
+          "type": "stream",
+          "name": "stderr",
+          "text": "\u001b[34m[D 260503 23:59:15 cell_runner:779]\u001b(B\u001b[m Running post_execution hooks in context\n\u001b[34m[D 260503 23:59:15 hooks_post_execution:75]\u001b(B\u001b[m Acquiring graph lock to update cell import workspace\n\u001b[34m[D 260503 23:59:15 hooks_post_execution:77]\u001b(B\u001b[m Acquired graph lock to update import workspace.\n",
+          "mimetype": "text/plain"
+        }
+      ]
+    },
+    {
+      "id": "nWHF",
+      "code_hash": "7f38b203f3aac19026e6fec6aabb1b38",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/html": "<div style='display: flex;flex: 1;flex-direction: column;justify-content: flex-start;align-items: normal;flex-wrap: nowrap;gap: 0.5rem'><marimo-progress data-title='&quot;Epoch 5 | Batch 147&quot;' data-subtitle='&quot;rec=2.6939, uns=0.1560, sup=0.0003&quot;' data-total='735' data-progress='735' data-rate='8.42' data-eta='0.0'></marimo-progress></div>"
+          }
+        }
+      ],
+      "console": [
+        {
+          "type": "stream",
+          "name": "stdout",
+          "text": "_BS,_sq, _feat_len\n128 25 5\nenc torch.Size([128, 25, 3])\nrec torch.Size([128, 25, 5])\ngenerated shape torch.Size([128, 25, 3])\n",
+          "mimetype": "text/plain"
+        },
+        {
+          "type": "stream",
+          "name": "stderr",
+          "text": "\u001b[34m[D 260504 00:00:42 cell_runner:779]\u001b(B\u001b[m Running post_execution hooks in context\n\u001b[34m[D 260504 00:00:42 hooks_post_execution:75]\u001b(B\u001b[m Acquiring graph lock to update cell import workspace\n\u001b[34m[D 260504 00:00:42 hooks_post_execution:77]\u001b(B\u001b[m Acquired graph lock to update import workspace.\n",
+          "mimetype": "text/plain"
+        }
+      ]
+    },
+    {
+      "id": "iLit",
+      "code_hash": "f950f84d69277af5bf2b9f6c76c9aefd",
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "application/vnd.vegalite.v6+json": "{\n  \"$schema\": \"https://vega.github.io/schema/vega-lite/v6.4.1.json\",\n  \"config\": {\n    \"view\": {\n      \"continuousHeight\": 300,\n      \"continuousWidth\": 300\n    }\n  },\n  \"data\": {\n    \"name\": \"data-b48df00a50cf7e6c215808880642667d\"\n  },\n  \"datasets\": {\n    \"data-b48df00a50cf7e6c215808880642667d\": [\n      {\n        \"epoch\": 0,\n        \"type\": \"reconstruction\",\n        \"value\": 3.3514875116802396\n      },\n      {\n        \"epoch\": 1,\n        \"type\": \"reconstruction\",\n        \"value\": 2.863661694688862\n      },\n      {\n        \"epoch\": 2,\n        \"type\": \"reconstruction\",\n        \"value\": 2.6916715466246313\n      },\n      {\n        \"epoch\": 3,\n        \"type\": \"reconstruction\",\n        \"value\": 2.6422607006669856\n      },\n      {\n        \"epoch\": 4,\n        \"type\": \"reconstruction\",\n        \"value\": 2.617857354027884\n      },\n      {\n        \"epoch\": 0,\n        \"type\": \"unsupervised\",\n        \"value\": 0.6916968299418079\n      },\n      {\n        \"epoch\": 1,\n        \"type\": \"unsupervised\",\n        \"value\": 0.619780853694799\n      },\n      {\n        \"epoch\": 2,\n        \"type\": \"unsupervised\",\n        \"value\": 0.3284827829623709\n      },\n      {\n        \"epoch\": 3,\n        \"type\": \"unsupervised\",\n        \"value\": 0.21186751573264193\n      },\n      {\n        \"epoch\": 4,\n        \"type\": \"unsupervised\",\n        \"value\": 0.17036283725783938\n      },\n      {\n        \"epoch\": 0,\n        \"type\": \"supervised\",\n        \"value\": 0.01030582495407537\n      },\n      {\n        \"epoch\": 1,\n        \"type\": \"supervised\",\n        \"value\": 0.020200574029313058\n      },\n      {\n        \"epoch\": 2,\n        \"type\": \"supervised\",\n        \"value\": 0.0315324429059908\n      },\n      {\n        \"epoch\": 3,\n        \"type\": \"supervised\",\n        \"value\": 0.0007676743513423012\n      },\n      {\n        \"epoch\": 4,\n        \"type\": \"supervised\",\n        \"value\": 0.0003979907000475392\n      }\n    ]\n  },\n  \"facet\": {\n    \"column\": {\n      \"field\": \"type\",\n      \"title\": \"type\",\n      \"type\": \"nominal\"\n    }\n  },\n  \"spec\": {\n    \"encoding\": {\n      \"x\": {\n        \"field\": \"epoch\",\n        \"title\": \"epoch\",\n        \"type\": \"quantitative\"\n      },\n      \"y\": {\n        \"field\": \"value\",\n        \"title\": \"value\",\n        \"type\": \"quantitative\"\n      }\n    },\n    \"mark\": {\n      \"clip\": false,\n      \"filled\": true,\n      \"opacity\": 0.7,\n      \"type\": \"point\"\n    }\n  },\n  \"usermeta\": {\n    \"embedOptions\": {\n      \"actions\": false\n    }\n  }\n}"
+          }
+        }
+      ],
+      "console": [
+        {
+          "type": "stream",
+          "name": "stderr",
+          "text": "\u001b[34m[D 260504 00:00:42 cell_runner:779]\u001b(B\u001b[m Running post_execution hooks in context\n\u001b[34m[D 260504 00:00:42 hooks_post_execution:75]\u001b(B\u001b[m Acquiring graph lock to update cell import workspace\n\u001b[34m[D 260504 00:00:42 hooks_post_execution:77]\u001b(B\u001b[m Acquired graph lock to update import workspace.\n",
+          "mimetype": "text/plain"
+        }
+      ]
+    },
+    {
+      "id": "ZHCJ",
+      "code_hash": null,
+      "outputs": [
+        {
+          "type": "data",
+          "data": {
+            "text/plain": ""
+          }
+        }
+      ],
+      "console": [
+        {
+          "type": "stream",
+          "name": "stderr",
+          "text": "\u001b[34m[D 260503 23:57:59 cell_runner:779]\u001b(B\u001b[m Running post_execution hooks in context\n\u001b[34m[D 260503 23:57:59 hooks_post_execution:75]\u001b(B\u001b[m Acquiring graph lock to update cell import workspace\n\u001b[34m[D 260503 23:57:59 hooks_post_execution:77]\u001b(B\u001b[m Acquired graph lock to update import workspace.\n",
+          "mimetype": "text/plain"
+        }
+      ]
+    }
+  ]
+}

@@ -1,6 +1,6 @@
 import marimo
 
-__generated_with = "0.22.5"
+__generated_with = "0.23.4"
 app = marimo.App(width="medium")
 
 
@@ -16,7 +16,7 @@ def _():
 
 @app.cell
 def _(pd):
-    sim = pd.read_parquet('./stochastic_sim_v2_output.parquet')
+    #sim = pd.read_parquet('./stochastic_sim_v2_output.parquet')
     real = pd.read_parquet('./dataset.parquet')
     return (real,)
 
@@ -31,8 +31,6 @@ def _(real):
 def _(real):
     _g = real.groupby('ramp_pattern_name')
     _g['frame'].max(), _g['uid'].count()
-    # _g.apply(lambda _d: _d['frame'].max())
-    # _g.apply(lambda _d: _d['uid'].count())
     return
 
 
@@ -103,14 +101,14 @@ def _():
     return
 
 
-@app.cell
+@app.cell(hide_code=True)
 def _():
     from erkdataset import ERKWindowDataset
 
     return (ERKWindowDataset,)
 
 
-@app.cell
+@app.cell(hide_code=True)
 def _():
     from sklearn.model_selection import train_test_split
     from torch.utils.data import Dataset, DataLoader
@@ -128,79 +126,18 @@ def _():
 
 @app.cell
 def _(ERKWindowDataset, FEATURE_COLUMNS, real, torch):
-
+    EPOCHS = 5
+    SEQ_LEN = 25 
     dataset = ERKWindowDataset(
         df=real,
         feature_columns=FEATURE_COLUMNS,
-        window_size=50,
-        stride=20,
+        window_size=SEQ_LEN,
+        stride=13,
     )
 
-    loader = torch.utils.data.DataLoader(dataset, batch_size=128, shuffle=True, num_workers=4, pin_memory=True, persistent_workers=True)
+    loader = torch.utils.data.DataLoader(dataset, batch_size=128, shuffle=True, num_workers=4)
     # Each batch: (64, 50, n_features)
-    return (loader,)
-
-
-app._unparsable_cell(
-    r"""
-    | Column | Type | Description |
-    |---|---|---|
-    | `cnr` | float64 | Cytoplasm-to-nucleus ratio: `mean_intensity_C1_ring / mean_intensity_C1_nuc`. |
-    | `cnr_median` | float64 | Same ratio using median intensities. |
-    | `uid` | string | Unique cell identifier: `ramp_pattern_name + str(fov) + "_" + str(particle)`. Incorporates the ramp pattern so cells from different stimulation patterns are distinguishable. |
-    | `frame` | uint32 | Alias for `timestep`. |
-    | `cnr_median_norm` | float64 | `cnr_median` divided by the per-cell baseline median of `cnr_median` (over frames `< norm_until_timepoint`). |
-    | `cnr_norm` | float64 | `cnr` divided by the per-cell baseline median of `cnr` (over frames `< norm_until_timepoint`). |
-    | `median_cnr_0_9` | float64 | Per-cell median of `cnr` over the baseline window (frames 0 to `norm_until_timepoint - 1`). Merged onto every row for that cell. |
-    | `energy_uJ` | float64 | Energy per stimulation pulse in microjoules: `P_uW * stim_exposure * 1e-3`. Interpolated from the ND5 calibration table. `0` when `stim_exposure` is `0`. |
-    | `fluence_mJ_cm2` | float64 | Fluence (energy dose per unit area) per pulse: `irradiance * stim_exposure * 1e-3` (mJ/cm2). |
-    | `energy_per_cell` | float64 | `fluence_mJ_cm2 * area`. Not in physical units since `area` is in pixels. **Warning:** nuclear area changes with ERK perturbation, so this column should not be used for quantitative comparisons. |
-
-    ---
-
-    ## Stimulation Input Features (`add_stim_features`)
-
-    Implemented in `notebooks/experiment/preprocessing.py`. This function augments the DataFrame with 9 per-cell stimulation input channels intended for modeling single-cell ERK responses. Assumes a uniform 1-minute grid (1 frame = 1 minute). Must be called **after** `load_and_clean` (which provides `fluence_mJ_cm2` and `stim`).
-
-    ```python
-    from notebooks.experiment.preprocessing import add_stim_features
-    df = add_stim_features(df)
-    ```
-
-    ### Parameters
-
-    | Parameter | Default | Description |
-    |---|---|---|
-    | `df` | *(required)* | DataFrame produced by `load_and_clean`. |
-    | `window_min` | `5` | Rolling window size in frames (minutes) for `n_5` and `slope_5`. |
-    | `ewma_alpha_fast` | `0.5` | Smoothing factor for fast EWMA (half-life ~1 min). |
-    | `ewma_alpha_slow` | `0.1` | Smoothing factor for slow EWMA (half-life ~7 min). |
-
-    ### Columns added
-
-    | Column | Type | Description |
-    |---|---|---|
-    | `u_t` | float64 | Raw pulse amplitude (`fluence_mJ_cm2`). Primary input signal. |
-    | `m_t` | int | Activation indicator: 1 if stimulated, 0 otherwise. Disambiguates rest from zero-amplitude frames. |
-    | `dt_since_pulse` | float64 | Minutes (frames) since the most recent pulse for this cell. `NaN` before the cell's first pulse. Captures gap dynamics. |
-    | `ewma_fast` | float64 | Exponentially weighted moving average of `u_t` with `alpha=0.5`. Short-term effective stimulation level (equivalent to a discretised first-order ODE with fast decay). |
-    | `ewma_slow` | float64 | EWMA of `u_t` with `alpha=0.1`. Medium-term accumulation (slow decay). |
-    | `n_5` | int | Number of pulses (`m_t == 1`) in the last `window_min` frames. Measures burst density. |
-    | `slope_5` | float64 | OLS slope of `u_t` over the last `window_min` frames. Detects ramp-up / ramp-down patterns. |
-    | `burst_pos` | int | 1-indexed position within the current consecutive burst of stimulated frames. 0 when the cell is not stimulated. Captures adaptation/facilitation within a burst. |
-    | `s_cum` | float64 | Cumulative sum of `u_t` up to and including the current frame. Total light exposure history. |
-
-    ### Design rationale
-
-    - **`u_t`, `m_t`, `dt_since_pulse`** are direct encodings of the stimulation protocol — essentially free and universally useful.
-    - **`ewma_fast`, `ewma_slow`** bridge deep learning and classical compartmental modeling: each EWMA is a discretised first-order ODE with a different time constant.
-    - **`n_5`, `slope_5`, `burst_pos`** capture higher-level temporal patterns (burst density, ramps, within-burst position).
-    - **`s_cum`** provides the model with long-term exposure history.
-
-    ---
-    """,
-    column=None, disabled=False, hide_code=True, name="_"
-)
+    return EPOCHS, SEQ_LEN, loader
 
 
 @app.cell
@@ -222,18 +159,12 @@ def _(torch):
 
 
 @app.cell
-def _(device, mo, nn, np, torch):
-    EPOCHS = 2 
-    SEQ_LEN = 50
-
-
-
-
+def _(EPOCHS, SEQ_LEN, device, nn, np, torch):
     class SubNetwork(nn.Module):
         def __init__(self, in_dim, out_dim, n_layers=2):
             super(SubNetwork, self).__init__()
             self.n_layers = n_layers 
-            self.rnn = nn.GRU(in_dim, out_dim, num_layers=n_layers)
+            self.rnn = nn.GRU(in_dim, out_dim, num_layers=n_layers, batch_first=True)
             self.fc =  nn.Linear(out_dim, out_dim)
             self.nl = nn.Sigmoid()
 
@@ -259,7 +190,7 @@ def _(device, mo, nn, np, torch):
         def train__(
             self,
             train_dl:torch.utils.data.DataLoader,
-            test_dl :torch.utils.data.DataLoader
+            bar = None
         ):
             batch_count = len(train_dl)
             self.losses = np.empty((EPOCHS * batch_count , 3))
@@ -272,9 +203,7 @@ def _(device, mo, nn, np, torch):
             mse_l = nn.MSELoss(reduction='mean')
 
             for e in range(EPOCHS):
-                print(f'\n===================== EPOCH{e} =======================')
-                for i, x in mo.status.progress_bar( enumerate(train_dl) , show_eta=True, show_rate=True, total=len(train_dl)):
-                    print('batch ', i )
+                for i, x in enumerate(train_dl):
                     x = x.to(device)
 
                     # Load and convert to L 
@@ -311,28 +240,12 @@ def _(device, mo, nn, np, torch):
                     # supervised loss
                     _normies = torch.empty(_BS)
 
-                    for _bi, _B in enumerate(enc_x): # SEQ_LEN, LATENT
-                        real = _B[1:]
-                        predicted = torch.empty_like(real)
-                        _Bl = list(_B)
+                    _h0    = enc_x[:, 0, :].unsqueeze(0).repeat(self.generator.n_layers, 1, 1)
+                    _z     = torch.randn(_BS, _sq - 1, self.data_dim, device=self.device)
 
-                        for _iL, _h0 in enumerate(_Bl[:-1]) :
-                            _pred = self.generate_random(1, h0=_h0.unsqueeze(0).repeat(self.generator.n_layers, 1))
-                            predicted[_iL] = _pred.unsqueeze(0)
+                    _h_pred = self.generator(_z, h0=_h0) # offender
 
-                        _normies[_bi] = torch.linalg.norm(real - predicted,dim=1).sum()
-
-                    _normean = _normies.mean()
-                    l_supervised = _normean
-
-
-                    # entire supervised loss in 3 lines, fully batched
-
-                    # h0    = enc_x[:, 0, :].unsqueeze(0).repeat(self.generator.n_layers, 1, 1)
-                    # z     = torch.randn(_BS, _sq - 1, self.data_dim, device=self.device)
-                    # h_pred = self.generator(z, h0=h0)
-                    # l_sup  = mse_l(h_pred, enc_x[:, 1:, :])
-
+                    l_supervised  = mse_l(_h_pred, enc_x[:, 1:, :])
 
                     # ----------------- Parameter update
                     optim_encoder.zero_grad()
@@ -350,6 +263,9 @@ def _(device, mo, nn, np, torch):
                     optim_generator.step()
                     optim_recovery.step()
                     optim_discriminator.step()
+                    if bar is not None:
+                        bar.update(increment=1, title=f"Epoch {e+1} | Batch {i+1}", subtitle=f"rec={l_rec:.4f}, uns={l_unsupervised:.4f}, sup={l_supervised:.4f}")
+
             return self.losses
 
         def _sample_noise(self, n):
@@ -361,12 +277,9 @@ def _(device, mo, nn, np, torch):
                 (n,)
             ).to(device)
 
-        def _rec_loss(self, enc, rec):
-            pass
-
         def generate_random(self,length=None, h0=None):
             '''
-            Generate a sequence of `length` using just Generator
+            Generate a latent sequence of `length` using just Generator
             '''
             if length is None:
                 length = SEQ_LEN
@@ -375,44 +288,40 @@ def _(device, mo, nn, np, torch):
             _gnrtd = self.generator(_z, h0)
             return _gnrtd
 
-        def generate_from(self, base, n):
-            '''
-            Encode the user-provided `base` sequence, then
-            feed it as a starting hidden state to the generator, and sample.
-            '''
-            pass
+        def generate_data(self, length):
+            _l = self.generate_random(length)
+            _r = self.recovery(_l)
+            return _r
 
-        def predict(self, *args, **kwargs): 
-            return generate_from(*args,**kwargs)
 
-    return EPOCHS, TimeGAN
+    return (TimeGAN,)
 
 
 @app.cell
-def _(FEATURE_COLUMNS, TimeGAN, loader, torch):
+def _(EPOCHS, FEATURE_COLUMNS, TimeGAN, loader, mo):
     _tg = TimeGAN(len(FEATURE_COLUMNS), 3)
-    _tg = torch.compile(_tg)
-    final_losses = _tg.train__(loader, None)
+    #_tg = torch.compile(_tg)
+    with mo.status.progress_bar(total=EPOCHS * len(loader)) as _bar:
+        final_losses = _tg.train__(loader, _bar)
     return (final_losses,)
 
 
 @app.cell
-def _(EPOCHS, df, final_losses, np, pd, qplot):
-    _rlosses = final_losses.reshape(EPOCHS, -1, 3).mean(1)
-    _rec, _sup, _unsup = _rlosses[:, 0], _rlosses[:, 1], _rlosses[:, 2]
-    _t = np.linspace(0, len(_rec))
-    _df = pd.DataFrame({"rec": _rec, "sup": _sup, "unsup": _unsup, "t":_t})
-    qplot(df, 't', 'rec')
-    return
-
-
-@app.cell
-def _(mo, torch):
-    _x = torch.tensor([1,2,3,4,5,6,7,8,9,10], dtype=torch.float32).reshape(5,2)
-    _y = torch.tensor([5,10,15,20,15])
-    _yp = torch.repeat_interleave(_y, 2).reshape(5,2)
-
-    mo.ui.matrix(_x),  mo.ui.matrix(_yp),  mo.ui.matrix(_x - _yp), mo.ui.matrix(torch.linalg.norm(_x - _yp,dim=1))
+def _(EPOCHS, final_losses, pd, qplot):
+    #_rlosses = final_losses.reshape(EPOCHS, -1, 3).mean(1)
+    _c = ['reconstruction', 'unsupervised', 'supervised']
+    batch_count = final_losses.shape[0] // EPOCHS
+    _rlosses = final_losses.reshape(EPOCHS, batch_count, 3).mean(1)  # (EPOCHS, 3)
+    _df = pd.DataFrame(_rlosses, columns=_c)
+    _df.index.name='epoch'
+    _df = _df.reset_index()
+    _df_long = _df.melt(
+        id_vars="epoch",
+        value_vars=_c,
+        var_name="type",
+        value_name="value"
+    )
+    qplot(_df_long, 'epoch', 'value', facet_col='type')
     return
 
 
