@@ -1,6 +1,6 @@
 import marimo
 
-__generated_with = "0.23.4"
+__generated_with = "0.22.5"
 app = marimo.App(width="medium")
 
 
@@ -127,17 +127,109 @@ def _():
 @app.cell
 def _(ERKWindowDataset, FEATURE_COLUMNS, real, torch):
     EPOCHS = 5
-    SEQ_LEN = 25 
+    SEQ_LEN = 25
     dataset = ERKWindowDataset(
         df=real,
         feature_columns=FEATURE_COLUMNS,
         window_size=SEQ_LEN,
         stride=13,
+        stratify=True,
+        response_col="cnr_mean_norm",
+        stim_col="fluence_mJ_cm2",
+        n_response_bins=3,
+        n_stim_bins=3,
     )
 
-    loader = torch.utils.data.DataLoader(dataset, batch_size=128, shuffle=True, num_workers=4)
-    # Each batch: (64, 50, n_features)
-    return EPOCHS, SEQ_LEN, loader
+    # Balanced batches: each window is drawn with weight 1/|stratum|, so in
+    # expectation a batch sees equal numbers from each (response, stimulus)
+    # bucket regardless of how lopsided the raw distribution is.
+    balanced_sampler = dataset.make_balanced_sampler()
+    loader = torch.utils.data.DataLoader(
+        dataset,
+        batch_size=128,
+        sampler=balanced_sampler,
+        num_workers=4,
+    )
+    # Each batch: (128, SEQ_LEN, n_features)
+    return EPOCHS, SEQ_LEN, dataset, loader
+
+
+@app.cell
+def _(dataset, pd):
+    # Per-stratum window counts. Labels read as r{response_bin}_s{stim_bin},
+    # where response_bin is the cnr_mean_norm peak-to-peak quantile and
+    # stim_bin is the fluence_mJ_cm2 mean quantile.
+    _counts = dataset.stratum_counts()
+    _stratum_count_df = pd.DataFrame(
+        {
+            "stratum": list(range(dataset.n_strata)),
+            "stratum_label": [dataset.stratum_label(i) for i in range(dataset.n_strata)],
+            "n_windows": _counts,
+        }
+    )
+    _stratum_count_df
+    return
+
+
+@app.cell
+def _(dataset):
+    # Bin edges actually used (after pd.qcut drops duplicate quantiles for ties).
+    {
+        "response_edges (cnr_mean_norm ptp)": dataset.response_edges.tolist(),
+        "stim_edges (fluence_mJ_cm2 mean)": dataset.stim_edges.tolist(),
+    }
+    return
+
+
+@app.cell
+def _(dataset):
+    strata_samples = dataset.sample_per_stratum(n_per_stratum=10, seed=0)
+    return (strata_samples,)
+
+
+@app.cell
+def _(mo, strata_samples):
+    import altair as alt
+
+    # cnr_mean_norm — the response axis. Each line is one sampled window;
+    # facets are strata, ordered so response amplitude increases left→right
+    # within each row and stimulus dose increases row-by-row.
+    _resp_chart = (
+        alt.Chart(strata_samples)
+        .mark_line(opacity=0.55)
+        .encode(
+            x=alt.X("t:Q", title="frame within window"),
+            y=alt.Y("cnr_mean_norm:Q", title="cnr_mean_norm"),
+            color=alt.Color("sample_id:N", legend=None),
+            detail="window_idx:N",
+        )
+        .properties(width=160, height=110)
+        .facet(facet=alt.Facet("stratum_label:N", title="stratum"), columns=3)
+        .properties(title="cnr_mean_norm per stratum (10 samples each)")
+    )
+    mo.ui.altair_chart(_resp_chart)
+    return (alt,)
+
+
+@app.cell
+def _(alt, mo, strata_samples):
+    # fluence_mJ_cm2 — the stimulus axis. Useful sanity check that the
+    # stim-bin axis really separates dose levels.
+    _stim_chart = (
+        alt.Chart(strata_samples)
+        .mark_line(opacity=0.55)
+        .encode(
+            x=alt.X("t:Q", title="frame within window"),
+            y=alt.Y("fluence_mJ_cm2:Q", title="fluence_mJ_cm2"),
+            color=alt.Color("sample_id:N", legend=None),
+            detail="window_idx:N",
+        )
+        .properties(width=160, height=110)
+        .facet(facet=alt.Facet("stratum_label:N", title="stratum"), columns=3)
+        .properties(title="fluence_mJ_cm2 per stratum (10 samples each)")
+    )
+    mo.ui.altair_chart(_stim_chart)
+    return
 
 
 @app.cell
@@ -153,7 +245,7 @@ def _():
 
 @app.cell
 def _(torch):
-    device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+    device = torch.device('cuda' if torch.cuda.is_available() else 'mps')
     device
     return (device,)
 
@@ -322,11 +414,6 @@ def _(EPOCHS, final_losses, pd, qplot):
         value_name="value"
     )
     qplot(_df_long, 'epoch', 'value', facet_col='type')
-    return
-
-
-@app.cell
-def _():
     return
 
 
