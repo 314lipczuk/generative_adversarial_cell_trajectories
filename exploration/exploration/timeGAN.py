@@ -1,7 +1,7 @@
 import marimo
 
 __generated_with = "0.22.5"
-app = marimo.App(width="medium")
+app = marimo.App(width="full")
 
 
 @app.cell
@@ -11,7 +11,7 @@ def _():
     import numpy as np
     import pandas as pd
 
-    return mo, np, pd, qplot
+    return mo, pd, qplot
 
 
 @app.cell
@@ -50,74 +50,21 @@ def _(real):
     return
 
 
-@app.cell(disabled=True)
-def _():
-    #class ERKWindowDataset(Dataset):
-        # """
-        # Per-cell sliding window dataset over ERK trajectory data.
-
-        # Each sample is a fixed-length window of shape (window_size, n_features)
-        # drawn from a single cell's (uid) time series, sorted by frame.
-
-        # Args:
-        #     df:             Source dataframe with at least `uid`, `frame`, and all
-        #                     columns in feature_columns.
-        #     feature_columns: Ordered list of column names to use as features.
-        #     window_size:    Number of consecutive frames per sample.
-        #     stride:         Step size between window starts (default 1).
-        # """
-
-        # def __init__(
-        #     self,
-        #     df: pd.DataFrame,
-        #     feature_columns: list[str],
-        #     window_size: int,
-        #     stride: int = 1,
-        # ):
-        #     self.feature_columns = feature_columns
-        #     self.window_size = window_size
-
-        #     # Build index: list of (array_of_features, start_idx) per valid window
-        #     self._windows: list[tuple[np.ndarray, int]] = []
-
-        #     for uid, group in df.groupby("uid"):
-        #         # Sort chronologically within each cell
-        #         traj = (
-        #             group.sort_values("frame")[feature_columns]
-        #             .to_numpy(dtype=np.float32)
-        #         )
-
-        #         # Slide windows; cells shorter than window_size are silently skipped
-        #         for start in range(0, len(traj) - window_size + 1, stride):
-        #             self._windows.append((traj, start))
-
-        # def __len__(self) -> int:
-        #     return len(self._windows)
-
-        # def __getitem__(self, idx: int) -> torch.Tensor:
-        #     traj, start = self._windows[idx]
-        #     window = traj[start : start + self.window_size]  # (window_size, n_features)
-        #     return torch.from_numpy(window)
-    return
-
-
-@app.cell(hide_code=True)
+@app.cell
 def _():
     from erkdataset import ERKWindowDataset
 
     return (ERKWindowDataset,)
 
 
-@app.cell(hide_code=True)
+@app.cell
 def _():
     from sklearn.model_selection import train_test_split
     from torch.utils.data import Dataset, DataLoader
 
     FEATURE_COLUMNS = """
     fluence_mJ_cm2
-    ewma_fast
     cnr_mean_norm
-    n_5
     median_cnr_0_9
     """.split()
     FEATURE_COLUMNS
@@ -126,7 +73,7 @@ def _():
 
 @app.cell
 def _(ERKWindowDataset, FEATURE_COLUMNS, real, torch):
-    EPOCHS = 5
+    EPOCHS = 100
     SEQ_LEN = 25
     dataset = ERKWindowDataset(
         df=real,
@@ -140,17 +87,13 @@ def _(ERKWindowDataset, FEATURE_COLUMNS, real, torch):
         n_stim_bins=3,
     )
 
-    # Balanced batches: each window is drawn with weight 1/|stratum|, so in
-    # expectation a batch sees equal numbers from each (response, stimulus)
-    # bucket regardless of how lopsided the raw distribution is.
     balanced_sampler = dataset.make_balanced_sampler()
     loader = torch.utils.data.DataLoader(
         dataset,
         batch_size=128,
         sampler=balanced_sampler,
-        num_workers=4,
+        num_workers=0,
     )
-    # Each batch: (128, SEQ_LEN, n_features)
     return EPOCHS, SEQ_LEN, dataset, loader
 
 
@@ -253,10 +196,14 @@ def _(torch):
 @app.cell
 def _(SEQ_LEN, device, nn, torch):
     class SubNetwork(nn.Module):
-        def __init__(self, in_dim, out_dim, n_layers=2, final_activation=nn.Sigmoid):
+        def __init__(
+            self, in_dim, out_dim, n_layers=2, final_activation=nn.Sigmoid
+        ):
             super().__init__()
             self.n_layers = n_layers
-            self.rnn = nn.GRU(in_dim, out_dim, num_layers=n_layers, batch_first=True)
+            self.rnn = nn.GRU(
+                in_dim, out_dim, num_layers=n_layers, batch_first=True
+            )
             self.fc = nn.Linear(out_dim, out_dim)
             self.nl = final_activation()
 
@@ -277,8 +224,9 @@ def _(SEQ_LEN, device, nn, torch):
             self.device = device
 
             self.encoder = SubNetwork(data_dim, latent_dim)
-            # Recovery output is unbounded — features here aren't guaranteed [0,1].
-            self.recovery = SubNetwork(latent_dim, data_dim, final_activation=nn.Identity)
+            self.recovery = SubNetwork(
+                latent_dim, data_dim, final_activation=nn.Identity
+            )
             self.generator = SubNetwork(data_dim, latent_dim)
             self.supervisor = SubNetwork(latent_dim, latent_dim)
             self.discriminator = SubNetwork(latent_dim, 1)
@@ -286,34 +234,37 @@ def _(SEQ_LEN, device, nn, torch):
 
         def _sample_noise(self, batch_size, seq_len=None):
             seq_len = seq_len or self.seq_len
-            return torch.randn(batch_size, seq_len, self.data_dim, device=self.device)
+            return torch.randn(
+                batch_size, seq_len, self.data_dim, device=self.device
+            )
 
         def fit(
             self,
-            train_dl: torch.utils.data.DataLoader,
-            epochs_embed: int = 5,
-            epochs_supervise: int = 5,
-            epochs_joint: int = 5,
+            train_dl,
+            epochs_embed=5,
+            epochs_supervise=5,
+            epochs_joint=5,
+            d_skip_threshold=0.15,
+            mm_weight=100.0,
+            sup_weight=100.0,
             bar=None,
         ):
             bce = nn.BCELoss()
             mse = nn.MSELoss()
-
             opt_er = torch.optim.Adam(
                 list(self.encoder.parameters()) + list(self.recovery.parameters())
             )
             opt_s = torch.optim.Adam(self.supervisor.parameters())
             opt_g = torch.optim.Adam(
-                list(self.generator.parameters()) + list(self.supervisor.parameters())
+                list(self.generator.parameters())
+                + list(self.supervisor.parameters())
             )
             opt_e_joint = torch.optim.Adam(
                 list(self.encoder.parameters()) + list(self.recovery.parameters())
             )
             opt_d = torch.optim.Adam(self.discriminator.parameters())
-
             losses = {"embed": [], "supervise": [], "joint": []}
 
-            # ----- Stage 1: encoder + recovery on reconstruction -----
             for e in range(epochs_embed):
                 for x in train_dl:
                     x = x.to(self.device)
@@ -327,11 +278,10 @@ def _(SEQ_LEN, device, nn, torch):
                     if bar is not None:
                         bar.update(
                             increment=1,
-                            title=f"[1/3 Embed] Ep {e+1}",
+                            title=f"[1/3 Embed] Ep {e + 1}",
                             subtitle=f"rec={l_rec.item():.4f}",
                         )
 
-            # ----- Stage 2: supervisor on next-step prediction in real latent space -----
             for e in range(epochs_supervise):
                 for x in train_dl:
                     x = x.to(self.device)
@@ -346,33 +296,42 @@ def _(SEQ_LEN, device, nn, torch):
                     if bar is not None:
                         bar.update(
                             increment=1,
-                            title=f"[2/3 Sup] Ep {e+1}",
+                            title=f"[2/3 Sup] Ep {e + 1}",
                             subtitle=f"sup={l_sup.item():.4f}",
                         )
 
-            # ----- Stage 3: joint adversarial training (separate G, E, D steps) -----
             for e in range(epochs_joint):
                 for x in train_dl:
                     x = x.to(self.device)
                     bs = x.shape[0]
-
-                    # G step: fool discriminator + stay aligned with real latent dynamics
                     z = self._sample_noise(bs)
                     e_hat = self.generator(z)
                     h_hat = self.supervisor(e_hat)
                     y_fake = self.discriminator(h_hat)
                     l_g_adv = bce(y_fake, torch.ones_like(y_fake))
-
                     h = self.encoder(x)
                     h_sup_pred = self.supervisor(h[:, :-1, :])
                     l_g_sup = mse(h_sup_pred, h[:, 1:, :])
-
-                    l_g = l_g_adv + 100.0 * torch.sqrt(l_g_sup + 1e-8)
+                    x_hat = self.recovery(h_hat)
+                    l_g_v1 = torch.mean(
+                        torch.abs(
+                            torch.sqrt(x_hat.var(dim=0, unbiased=False) + 1e-6)
+                            - torch.sqrt(x.var(dim=0, unbiased=False) + 1e-6)
+                        )
+                    )
+                    l_g_v2 = torch.mean(
+                        torch.abs(x_hat.mean(dim=0) - x.mean(dim=0))
+                    )
+                    l_g_mm = l_g_v1 + l_g_v2
+                    l_g = (
+                        l_g_adv
+                        + sup_weight * torch.sqrt(l_g_sup + 1e-8)
+                        + mm_weight * l_g_mm
+                    )
                     opt_g.zero_grad()
                     l_g.backward()
                     opt_g.step()
 
-                    # E step: keep recovery faithful; nudge encoder toward predictable dynamics
                     h = self.encoder(x)
                     x_tilde = self.recovery(h)
                     l_e_rec = mse(x_tilde, x)
@@ -383,7 +342,6 @@ def _(SEQ_LEN, device, nn, torch):
                     l_e.backward()
                     opt_e_joint.step()
 
-                    # D step
                     with torch.no_grad():
                         h_real = self.encoder(x)
                         z_d = self._sample_noise(bs)
@@ -394,24 +352,27 @@ def _(SEQ_LEN, device, nn, torch):
                         y_fake_d, torch.zeros_like(y_fake_d)
                     )
                     opt_d.zero_grad()
-                    l_d.backward()
-                    opt_d.step()
+                    _stepped = l_d.item() > d_skip_threshold
+                    if _stepped:
+                        l_d.backward()
+                        opt_d.step()
 
                     losses["joint"].append(
                         {
                             "rec": l_e_rec.item(),
                             "sup": l_g_sup.item(),
                             "g_adv": l_g_adv.item(),
+                            "g_mm": l_g_mm.item(),
                             "d": l_d.item(),
+                            "d_stepped": float(_stepped),
                         }
                     )
                     if bar is not None:
                         bar.update(
                             increment=1,
-                            title=f"[3/3 Joint] Ep {e+1}",
-                            subtitle=f"rec={l_e_rec.item():.3f} sup={l_g_sup.item():.3f} g={l_g_adv.item():.3f} d={l_d.item():.3f}",
+                            title=f"[3/3 Joint] Ep {e + 1}",
+                            subtitle=f"rec={l_e_rec.item():.3f} sup={l_g_sup.item():.3f} g={l_g_adv.item():.3f} mm={l_g_mm.item():.3f} d={l_d.item():.3f}{'' if _stepped else ' [skip]'}",
                         )
-
             self.losses = losses
             return losses
 
@@ -425,22 +386,22 @@ def _(SEQ_LEN, device, nn, torch):
                 x_hat = self.recovery(h_hat)
             return x_hat
 
-
     return (TimeGAN,)
 
 
 @app.cell
-def _(EPOCHS, FEATURE_COLUMNS, TimeGAN, loader, mo):
-    _tg = TimeGAN(len(FEATURE_COLUMNS), 3)
+def _(EPOCHS, FEATURE_COLUMNS, TimeGAN, loader, mo, torch):
+    tg = TimeGAN(len(FEATURE_COLUMNS), 8)
     with mo.status.progress_bar(total=3 * EPOCHS * len(loader)) as _bar:
-        final_losses = _tg.fit(
+        final_losses = tg.fit(
             loader,
             epochs_embed=EPOCHS,
             epochs_supervise=EPOCHS,
             epochs_joint=EPOCHS,
             bar=_bar,
         )
-    return (final_losses,)
+    torch.save(tg, 'timeGAN_v2.pt')
+    return final_losses, tg
 
 
 @app.cell
@@ -454,6 +415,189 @@ def _(final_losses, pd, qplot):
                 )
     _df_long = pd.DataFrame(_rows)
     qplot(_df_long, "iter", "value", facet_col="facet")
+    return
+
+
+@app.cell(hide_code=True)
+def _(FEATURE_COLUMNS, dataset, device, mo, pd, tg):
+    import torch as _t
+    import altair as _alt
+
+    tg.eval()
+    _n = 5
+    _real = _t.stack([dataset[i] for i in range(_n)]).to(device)
+    with _t.no_grad():
+        _gen = tg.generate(_n)
+
+    _rows = []
+    for _src, _arr in [
+        ("real", _real.cpu().numpy()),
+        ("generated", _gen.cpu().numpy()),
+    ]:
+        for _sid in range(_arr.shape[0]):
+            for _ti in range(_arr.shape[1]):
+                for _fi, _fn in enumerate(FEATURE_COLUMNS):
+                    _rows.append(
+                        {
+                            "source": _src,
+                            "cell": _sid,
+                            "feature": _fn,
+                            "row": f"cell{_sid} | {_fn}",
+                            "t": _ti,
+                            "value": float(_arr[_sid, _ti, _fi]),
+                        }
+                    )
+    _df_cmp = pd.DataFrame(_rows)
+
+    # Sort row order: cell-major, feature-minor
+    _row_order = [f"cell{c} | {f}" for c in range(_n) for f in FEATURE_COLUMNS]
+
+    _base = (
+        _alt.Chart(_df_cmp)
+        .mark_line()
+        .encode(
+            x=_alt.X("t:Q", title="frame"),
+            y=_alt.Y("value:Q", title=None),
+        )
+        .properties(width=180, height=70)
+    )
+
+    _chart_cmp = (
+        _base.facet(
+            row=_alt.Row(
+                "row:N",
+                sort=_row_order,
+                title=None,
+                header=_alt.Header(labelAngle=0, labelAlign="left"),
+            ),
+            column=_alt.Column("source:N", title=None),
+        )
+        .resolve_scale(y="independent")
+        .properties(title="real vs generated, per (cell, feature)")
+    )
+    mo.ui.altair_chart(_chart_cmp)
+    return
+
+
+@app.cell(hide_code=True)
+def _(FEATURE_COLUMNS, SEQ_LEN, dataset, device, mo, pd, tg):
+    import torch as _t
+    import altair as _alt
+
+    tg.eval()
+    _n = 5
+    _prefix_len = 12
+    _real_s = _t.stack([dataset[i] for i in range(_n)]).to(device)
+    with _t.no_grad():
+        _h = tg.encoder(_real_s)
+        _h_pref = _h[:, :_prefix_len, :]
+        _out, _hid = tg.supervisor.rnn(_h_pref)
+        _last = tg.supervisor.nl(tg.supervisor.fc(_out[:, -1:, :]))
+        _rolled = [_last]
+        _cur = _last
+        for _ in range(SEQ_LEN - _prefix_len - 1):
+            _out, _hid = tg.supervisor.rnn(_cur, _hid)
+            _cur = tg.supervisor.nl(tg.supervisor.fc(_out))
+            _rolled.append(_cur)
+        _h_cont = _t.cat(_rolled, dim=1)
+        _h_full = _t.cat([_h_pref, _h_cont], dim=1)
+        _x_pred = tg.recovery(_h_full)
+
+    _real_np = _real_s.cpu().numpy()
+    _pred_np = _x_pred.cpu().numpy()
+
+    _rows = []
+    for _sid in range(_n):
+        for _ti in range(SEQ_LEN):
+            _region = "prefix" if _ti < _prefix_len else "rollout"
+            for _fi, _fn in enumerate(FEATURE_COLUMNS):
+                _rows.append(
+                    {
+                        "sample": _sid,
+                        "t": _ti,
+                        "feature": _fn,
+                        "kind": f"real ({_region})",
+                        "value": float(_real_np[_sid, _ti, _fi]),
+                    }
+                )
+                _rows.append(
+                    {
+                        "sample": _sid,
+                        "t": _ti,
+                        "feature": _fn,
+                        "kind": f"pred ({_region})",
+                        "value": float(_pred_np[_sid, _ti, _fi]),
+                    }
+                )
+    _df_sup = pd.DataFrame(_rows)
+
+    _base_sup = (
+        _alt.Chart(_df_sup)
+        .mark_line(opacity=0.85)
+        .encode(
+            x=_alt.X("t:Q", title="frame"),
+            y=_alt.Y("value:Q"),
+            color=_alt.Color(
+                "kind:N",
+                scale=_alt.Scale(
+                    domain=[
+                        "real (prefix)",
+                        "pred (prefix)",
+                        "real (rollout)",
+                        "pred (rollout)",
+                    ],
+                    range=["#1f77b4", "#aec7e8", "#d62728", "#ff9896"],
+                ),
+            ),
+            detail="sample:N",
+            strokeDash=_alt.StrokeDash("kind:N"),
+        )
+        .properties(
+            width=200,
+            height=130,
+            title=f"Supervisor rollout: prefix t<{_prefix_len}",
+        )
+    )
+
+    _chart_sup = _base_sup.facet(
+        column=_alt.Column("feature:N", title=None),
+        row=_alt.Row("sample:N", title="sample"),
+    ).resolve_scale(y="independent")
+    mo.ui.altair_chart(_chart_sup)
+    return
+
+
+@app.cell(hide_code=True)
+def changelog(mo):
+    mo.md(r"""
+    ## Changelog
+
+    ### Architecture & training (vs. starting point)
+    - **3-stage training**: embedder+recovery on reconstruction → supervisor on next-step prediction in real latent space → joint adversarial.
+    - **Supervisor network added** — separate from generator. Generator emits raw latent; supervisor enforces temporal dynamics. G output is passed through supervisor before D sees it.
+    - **Separate G / E / D optimizer steps** with correct adversarial signs: G minimizes `BCE(D(fake),1)`, D minimizes `BCE(D(real),1) + BCE(D(fake),0)`. Earlier code stepped G+D on the same loss with the same sign — broken.
+    - **Recovery uses `nn.Identity`** (not sigmoid). Features aren't bounded to [0,1].
+    - **Latent dim 8** (up from 3). Latent ≠ bottleneck — it's the space where dynamics are learnable.
+    - **Public `tg`** instead of cell-private `_tg` — viz cells reference it directly, no `globals()` hack.
+
+    ### Mode-collapse mitigations
+    - **Moment matching** loss: `mean(|var(x_hat) − var(x)|) + mean(|mean(x_hat) − mean(x)|)` per feature, batch-wise. Weighted 100× in `l_g`. Directly punishes low-diversity output.
+    - **D-skip threshold**: skip `opt_d.step()` when `l_d < 0.15`. Prevents D from saturating and killing G's gradient.
+    - **Tunable weights** as `fit()` args: `mm_weight`, `sup_weight`, `d_skip_threshold`.
+
+    ### Feature reduction
+    - Dropped engineered features `ewma_fast` and `n_5`. Kept `fluence_mJ_cm2` (stim), `cnr_mean_norm` (ERK), `median_cnr_0_9` (baseline). Engineered features are deterministic functions of raw signals — G shouldn't waste capacity recomputing them, and D gets free tells if G's recomputation is imperfect.
+
+    ### Visualizations
+    - **Fsup**: 5 real vs 5 generated trajectories, faceted per feature.
+    - **AXDa**: supervisor rollout — real prefix `t<12`, model-continued `t≥12`. Color separates real vs predicted × prefix vs rollout.
+
+    ### Discussion (not implemented)
+    - **Stratum / stim conditioning** — would split the multi-mode problem into per-stim subproblems, ideal for the downstream "stim → ERK" pretraining goal. Decided to first push unconditional with the knobs above; condition on stim only (continuous fluence or one-hot bin) if collapse persists. Conditioning is the inductive bias that matches the downstream task — not a cheat.
+
+    ### Operational notes
+    - `EPOCHS = 1` and `num_workers = 0` for fast iteration / no fork crashes. Bump for real runs.
+    """)
     return
 
 
